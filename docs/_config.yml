@@ -1,0 +1,16 @@
+baseurl: /providence
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+strict_front_matter: true
+timezone: America/Detroit
+
+repository: mgsisk/providence
+github: [metadata]
+
+description: Opinionated Vagrant shell provisioner for web development.
+theme: jekyll-theme-primer
+title: Providence
