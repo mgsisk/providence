@@ -74,13 +74,13 @@ contributions. List notable changes in the Unreleased section of the
 
 ### Merge
 
-When you're ready, [create a pull request][] against the `master` branch with [a
+When you're ready, [create a pull request][] against the `main` branch with [a
 good commit message][]. The [pull request template][] will help you provide the
 information required to review your request. Fill out each section of the
 template as best you can; the more information you can provide, the better the
 chance of having your changes merged.
 
-Always use rebase to bring the latest changes from `master` to your branch
+Always use rebase to bring the latest changes from `main` to your branch
 before submitting your request. Squash commits into logical units of work; when
 in doubt, squash to a single commit.
 
