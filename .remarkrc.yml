@@ -1,0 +1,2 @@
+plugins:
+  - '@mgsisk/remark-lint-config'
