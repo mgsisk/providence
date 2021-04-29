@@ -1,0 +1,57 @@
+name: build
+
+on: [push]
+
+jobs:
+
+  analyze:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+      - run: npm clean-install
+      - uses: codacy/codacy-analysis-cli-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [12.x, 14.x, 15.x]
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm clean-install
+      - run: npm test
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+      - run: npm clean-install
+      - id: set_vars
+        run: |
+          npm run make.sh
+          echo "::set-output name=tag_name::${GITHUB_REF#refs/tags/}"
+          echo "::set-output name=tag_vers::${GITHUB_REF#refs/tags/v}"
+      - id: read_changelog
+        uses: mindsers/changelog-reader-action@master
+        with:
+          version: ${{ steps.set_vars.outputs.tag_vers }}
+          path: docs/CHANGELOG.md
+      - uses: softprops/action-gh-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          body: ${{ steps.read_changelog.outputs.changes }}
+          draft: ${{ steps.read_changelog.outputs.status == 'unreleased' }}
+          files: ./dist/provisioner.sh
+          prerelease: ${{ steps.read_changelog.outputs.status == 'prereleased' }}
+          tag_name: ${{ steps.set_vars.outputs.tag_name }}
