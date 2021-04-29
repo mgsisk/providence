@@ -1,0 +1,48 @@
+{
+  "name": "@mgsisk/providence",
+  "main": "dist/provisioner.sh",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Opinionated Vagrant shell provisioner for web development.",
+  "keywords": [
+    "provision",
+    "vagrant",
+    "web"
+  ],
+  "homepage": "https://github.com/mgsisk/providence#readme",
+  "bugs": "https://github.com/mgsisk/providence/issues",
+  "license": "ISC",
+  "author": "Michael Sisk <me@mgsisk.com> (https://mgsisk.com)",
+  "funding": "https://github.com/mgsisk/providence?sponsor=1",
+  "files": [
+    "dist"
+  ],
+  "directories": {
+    "doc": "docs",
+    "lib": "src"
+  },
+  "repository": "github:mgsisk/providence",
+  "scripts": {
+    "fix.md": "remark . .github/ --ignore-pattern 'LICENSE*' -o",
+    "fix.sh": "shellcheck *.sh -f diff | git apply",
+    "lint.json": "YAMLLINT_SCHEMA=JSON_SCHEMA yamllint '**/*.json' '**/.*.json'",
+    "lint.md": "remark . .github/ --ignore-pattern 'LICENSE*' --ignore-pattern 'test/**'",
+    "lint.sh": "shellcheck src/**/*.sh",
+    "lint.yml": "yamllint '**/*.yml' '**/.*.yml'",
+    "premake.docs": "vagrant status --no-tty | grep -qw running || vagrant up",
+    "make.docs": "vagrant ssh -c 'sudo jekyll build -d /srv/web/providence -s /vagrant/docs -w --force_polling'",
+    "make.sh": "src/make.sh",
+    "test": "npm run lint.sh",
+    "preversion": "npm test",
+    "version": "git add --all",
+    "postversion": "git push --follow-tags",
+    "watch.sh": "chokidar 'src/**/*.sh' -c 'npm run make.sh'"
+  },
+  "devDependencies": {
+    "@mgsisk/remark-lint-config": "^0.4.0",
+    "chokidar-cli": "^2.1.0",
+    "remark-cli": "^9.0.0",
+    "shellcheck": "^1.0.0",
+    "yaml-lint": "^1.2.4"
+  }
+}
