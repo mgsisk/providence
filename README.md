@@ -17,9 +17,10 @@ using [Debian][] base boxes. It includes:
 - **Languages** – Go, Node, Perl, PHP, Python, Ruby, Rust
 - **Package Managers** – Bundler, Cargo, Composer, NPM, Pipenv
 - **Static Site Generators** – Hugo, Jekyll, Pelican, Zola
-- **Utilities** – Adminer, Docker Compose MailHog, Git LFS, git-svn, GitHub CLI,
-  node-build, ocp, perl-build, phpMemcachedAdmin, phpRedisAdmin, postfix,
-  ruby-build, ShellCheck, ShellSpec, vim, Webgrind, webmin, WP-CLI, xmllint
+- **Utilities** – Adminer, Docker Compose, MailHog, Git LFS, git-svn,
+  GitHub CLI, node-build, ocp, perl-build, phpMemcachedAdmin, phpRedisAdmin,
+  postfix, ruby-build, ShellCheck, ShellSpec, vim, Webgrind, webmin, WP-CLI,
+  xmllint
 - **Version Control Systems** – Git, Mercurial, Subversion
 - **Version Managers** – goenv, nodenv, plenv, pyenv, rbenv, rustup
 - **Web Servers** – Apache, Nginx
