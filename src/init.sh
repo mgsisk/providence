@@ -98,7 +98,7 @@ sort -uo /tmp/prov-key /tmp/prov-key
 : "${CKEY:=/etc/ssl/private/ssl-cert-snakeoil.key}"
 
 echo " $PROVIDENCE " >/tmp/prov
-sed -i 's/ \* / apache couchdb docker hg git github go hugo jekyll mailhog mariadb memcached mongodb nginx node pelican perl php postgres python redis ruby rust shell sqlite svn webmin wordpress xml zola /' /tmp/prov
+sed -i 's/ \* / apache couchdb docker git github go hg hugo jekyll mailhog mariadb memcached mongodb nginx node pelican perl php postgres python redis ruby rust shell sqlite svn webmin wordpress xml zola /' /tmp/prov
 tr ' ' '\n' </tmp/prov >/tmp/p && mv /tmp/p /tmp/prov
 grep -qw . /tmp/prov && cat /tmp/prov-key >> /tmp/prov
 sed -i '/^\.\?$/d' /tmp/prov
