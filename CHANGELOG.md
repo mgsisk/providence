@@ -43,6 +43,6 @@ No unreleased changes.
   - xml
   - zola
 
-[Unreleased]: https://github.com/mgsisk/providence/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/mgsisk/providence/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/mgsisk/providence/releases/tag/v0.1.0
-[semantic]: https://semver.org 
+[semantic]: https://semver.org
