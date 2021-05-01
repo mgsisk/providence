@@ -62,10 +62,9 @@ you're unwilling or unable to install Node. Run `vagrant up` and then use
 ### Test
 
 Changes must adhere to this project's coding and documentation standards. All
-`lint` tasks should run without generating errors or warnings. Add tests to an
-appropriate suite in `/test` to cover your changes, then use `npm test` to make
-sure all tests pass. Update documentation in `/docs` for significant changes,
-and use the `make.docs` task to verify the updates.
+`lint` tasks should run without generating errors or warnings. Update
+documentation in `/docs` for significant changes, and use the `make.docs` task
+to verify the updates.
 
 Add yourself to the list of [contributors][], optionally linked to your
 personal site or a social profile, if you'd like recognition for your
