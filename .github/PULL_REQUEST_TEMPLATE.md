@@ -6,14 +6,14 @@ Use appropriate labels to identify the changes in this request.
 Delete this commented-out section before submitting your request.
 -->
 
-**Description**  
+**Description**\
 Provide a clear and concise description of the request here.
 
-**Context**  
+**Context**\
 Provide a clear and concise explanation for the request here, including
 references to any relevant issues (i.e. Fixes #0).
 
-**Verification**  
+**Verification**\
 Provide a clear and concise explanation here for any items not checked below.
 
 - [ ] I have read this project's code of conduct

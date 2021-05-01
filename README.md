@@ -72,16 +72,16 @@ anyone that has found this project useful.
 [badge-release]: https://img.shields.io/github/v/tag/mgsisk/providence?sort=semver
 [changelog]: CHANGELOG.md
 [code of conduct]: CODE_OF_CONDUCT.md
-[Contributions]: CONTRIBUTING.md
+[contributions]: CONTRIBUTING.md
 [contributors]: AUTHORS.md
-[Debian]: https://app.vagrantup.com/debian
+[debian]: https://app.vagrantup.com/debian
 [documentation]: docs/README.md
-[ISC]: LICENSE.md
+[isc]: LICENSE.md
 [other works]: THANKS.md
 [security]: SECURITY.md
-[Support resources]: SUPPORT.md
+[support resources]: SUPPORT.md
 [url-build]: https://github.com/mgsisk/github-actions-test/actions?query=workflow%3Abuild
 [url-codacy]: https://app.codacy.com/gh/mgsisk/providence
 [url-funding]: CONTRIBUTING.md#funding
 [url-release]: https://github.com/mgsisk/providence/releases
-[Vagrant shell provisioner]: https://www.vagrantup.com/docs/provisioning/shell
+[vagrant shell provisioner]: https://www.vagrantup.com/docs/provisioning/shell

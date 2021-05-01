@@ -113,7 +113,7 @@ Providence completes provisioning by creating web-accessible indexes for
 took and what IP and hostname you can use to access the guest (if a web server
 is running):
 
-```
+```txt
 default: Provisioning completed in 03m 21s
 default: Now serving 192.168.84.42 at providence.test
 default: See 192.168.84.42:1234 or sys.providence.test for guest utilities
@@ -124,7 +124,7 @@ Providence will use the guest's hostname wherever possible. Setting the guest's
 hostname in your Vagrantfile is half of the process; you'll also need to update
 your system's hosts file for the hostname to work in a web browser:
 
-```
+```txt
 192.168.84.42    providence.test    sys.providence.test
 ```
 
