@@ -50,8 +50,8 @@ request, keep changes focused, and improve your chance of merging.
 
 Start by [forking this repository][], [creating a branch][], and making some
 changes. Branch names should be descriptive, use `-` separators, and may
-optionally include an issue ID prefix (e.g. `42-making-changes`). [Node][] and
-[npm-scripts][] provide the tools required to maintain a consistent coding
+optionally include an issue ID prefix (e.g. `42-making-changes`). [Node.js][]
+and [npm-scripts][] provide the tools required to maintain a consistent coding
 style and automate essential development tasks. Install the project dependencies
 with `npm install`, then use `npm run` to see a list of available tasks.
 
@@ -80,9 +80,9 @@ information required to review your request. Fill out each section of the
 template as best you can; the more information you can provide, the better the
 chance of having your changes merged.
 
-Always use rebase to bring the latest changes from `main` to your branch
-before submitting your request. Squash commits into logical units of work; when
-in doubt, squash to a single commit.
+Always use rebase to bring the latest changes from `main` to your branch before
+submitting your request. Squash commits into logical units of work; when in
+doubt, squash to a single commit.
 
 ## [Funding][]
 
@@ -103,14 +103,14 @@ ongoing work on this and other projects, please use [Liberapay][].
 [feature request template]: .github/ISSUE_TEMPLATE/feature-request.md
 [forking this repository]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
 [funding]: .github/FUNDING.yml?sponsor=1
-[IssueHunt]: https://issuehunt.io/r/mgsisk
+[issuehunt]: https://issuehunt.io/r/mgsisk
 [issues]: https://github.com/mgsisk/providence/issues
-[Liberapay]: https://liberapay.com/mgsisk
-[node]: https://nodejs.org
+[liberapay]: https://liberapay.com/mgsisk
+[node.js]: https://nodejs.org
 [npm-scripts]: https://docs.npmjs.com/misc/scripts
 [pull request template]: .github/PULL_REQUEST_TEMPLATE.md
 [pulls]: https://github.com/mgsisk/providence/pulls
 [security policy]: SECURITY.md
 [support resources]: SUPPORT.md
-[Vagrant]: https://www.vagrantup.com
-[VirtualBox]: https://www.virtualbox.org
+[vagrant]: https://www.vagrantup.com
+[virtualbox]: https://www.virtualbox.org
