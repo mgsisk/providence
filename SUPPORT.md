@@ -26,9 +26,9 @@ This is a great way to receive individualized help while providing financial
 support to this project.
 
 [code of conduct]: CODE_OF_CONDUCT.md
-[Contact]: https://otechie.com/mgsisk
+[contact]: https://otechie.com/mgsisk
 [contributing guidelines]: CONTRIBUTING.md
-[Discussions]: https://github.com/mgsisk/providence/discussions
-[Documentation]: https://mgsisk.com/providence
-[Issues]: https://github.com/mgsisk/providence/issues
-[Otechie]: https://otechie.com
+[discussions]: https://github.com/mgsisk/providence/discussions
+[documentation]: https://mgsisk.com/providence
+[issues]: https://github.com/mgsisk/providence/issues
+[otechie]: https://otechie.com
