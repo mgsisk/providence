@@ -12,4 +12,4 @@ No contributions from others yet. See the [contributing guidelines][] if you'd
 like to contribute to this project.
 
 [contributing guidelines]: CONTRIBUTING.md
-[Michael Sisk]: https://mgsisk.com
+[michael sisk]: https://mgsisk.com
