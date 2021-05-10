@@ -4,7 +4,9 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
-No unreleased changes.
+### Fixed
+
+- WP-CLI provisioning
 
 ## [0.1.0][] - 2021-04-29
 

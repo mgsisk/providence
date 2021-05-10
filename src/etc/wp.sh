@@ -7,6 +7,7 @@ if command -v wp >/dev/null
   then echo 'Configuring wp-cli'
   export WP_CLI_ALLOW_ROOT=:
   mkdir -p .wp-cli /root/.wp-cli
+  : "${WP_SRV:=/srv/web}"
 
   cat <<_ >.wp-cli/config.yml
 path: $WP_SRV
