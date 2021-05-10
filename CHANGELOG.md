@@ -4,6 +4,10 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
+No unreleased changes.
+
+## [0.1.1][] - 2021-05-10
+
 ### Fixed
 
 - WP-CLI provisioning
@@ -45,6 +49,7 @@ Notable project changes. Versions are [semantic][].
   - xml
   - zola
 
-[unreleased]: https://github.com/mgsisk/providence/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/mgsisk/providence/releases/tag/v0.1.0
+[unreleased]: https://github.com/mgsisk/providence/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/mgsisk/providence/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/mgsisk/providence/tree/v0.1.0
 [semantic]: https://semver.org
