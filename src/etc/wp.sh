@@ -12,19 +12,10 @@ if command -v wp >/dev/null
   cat <<_ >.wp-cli/config.yml
 path: $WP_SRV
 
-core config:
+config create:
   dbname: wp
   dbuser: root
   dbpass: vagrant
-  extra-php: |
-    define( 'FS_METHOD', 'direct' );
-    define( 'JETPACK_DEV_DEBUG', true );
-    define( 'SAVEQUERIES', true );
-    define( 'SCRIPT_DEBUG', true );
-    define( 'WP_DEBUG_DISPLAY', true );
-    define( 'WP_DEBUG_LOG', true );
-    define( 'WP_DEBUG', true );
-    define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
 core download:
   path: $WP_SRV
