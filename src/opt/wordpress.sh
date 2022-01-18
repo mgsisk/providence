@@ -36,7 +36,15 @@ if grep -qw wordpress /tmp/prov
     mysql -u root '-pvagrant' -e 'create schema if not exists wp'
     [ -n "$WP_VER" ] && wp core download --version="$WP_VER"
     [ -z "$WP_VER" ] && wp core download
-    wp core config
+    wp config create
+    wp config set FS_METHOD direct
+    wp config set JETPACK_DEV_DEBUG true --raw
+    wp config set SAVEQUERIES true --raw
+    wp config set SCRIPT_DEBUG true --raw
+    wp config set WP_DEBUG true --raw
+    wp config set WP_DEBUG_DISPLAY true --raw
+    wp config set WP_DEBUG_LOG true --raw
+    wp config set WP_ENVIRONMENT_TYPE development
     wp core multisite-install
     wp theme install $(tr "\n" ' ' </tmp/wp-themes)
     xargs -l wp theme enable </tmp/wp-themes
