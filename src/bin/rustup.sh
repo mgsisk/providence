@@ -6,7 +6,7 @@
 
 if grep -qw rust /tmp/prov
   then echo 'Installing rustup'
-  export CARGO_HOME=$VUD/.cargo RUSTUP_HOME=$VUD/.rustup
+  export CARGO_HOME="$VUD/.cargo" RUSTUP_HOME="$VUD/.rustup"
   wget -nc -qO /usr/local/bin/rustup-init "https://static.rust-lang.org/rustup/dist/$(uname -m)-unknown-linux-gnu/rustup-init"
   chmod +x /usr/local/bin/rustup-init
   rustup-init -y >/dev/null 2>/dev/null
