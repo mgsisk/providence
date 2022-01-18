@@ -67,7 +67,7 @@ anyone that has found this project useful.
 [ISC][]
 
 [badge-build]: https://img.shields.io/github/workflow/status/mgsisk/providence/build
-[badge-funding]: https://img.shields.io/liberapay/receives/mgsisk
+[badge-funding]: https://img.shields.io/github/sponsors/mgsisk
 [badge-quality]: https://img.shields.io/codacy/grade/e18fdb6393be43b59ea02a285c1faca8
 [badge-release]: https://img.shields.io/github/v/tag/mgsisk/providence?sort=semver
 [changelog]: CHANGELOG.md
