@@ -70,7 +70,7 @@ term=$(date +%s)
 mins=$(((term - init) / 60))
 secs=$((term - init - mins * 60))
 
-printf 'Provisioning completed in %02dm %02ds' "$mins" "$secs"
+printf 'Provisioning completed in %02dm %02ds\n' "$mins" "$secs"
 lsof -i:80 >/dev/null && echo "Now serving $(hostname -I | cut -d' ' -f2) at $(hostname -f)"
 lsof -i:1234 >/dev/null && echo "See $(hostname -I | cut -d' ' -f2):1234 or sys.$(hostname -f) for guest utilities"
 
