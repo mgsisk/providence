@@ -4,7 +4,9 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
-No unreleased changes.
+### Fixed
+
+- WordPress versioning for X.Y.0 versions
 
 ## [0.1.2][] - 2022-01-18
 
