@@ -67,7 +67,7 @@ echo "$NODE_VER" | grep -iq '[a-z_-]' || NODE_VER="$(printf '%s.0.0' "$NODE_VER"
 echo "$PERL_VER" | grep -iq '[a-z_-]' || PERL_VER="$(printf '%s.0.0' "$PERL_VER" | cut -d. -f-3 | sed 's/^\.0\.0$//')"
 echo "$PYTHON_VER" | grep -iq '[a-z_-]' || PYTHON_VER="$(printf '%s.0.0' "$PYTHON_VER" | cut -d. -f-3 | sed 's/^\.0\.0$//')"
 echo "$RUBY_VER" | grep -iq '[a-z_-]' || RUBY_VER="$(printf '%s.0.0' "$RUBY_VER" | cut -d. -f-3 | sed 's/^\.0\.0$//')"
-echo "$WP_VER" | grep -iq '[a-z_-]' || WP_VER="$(printf '%s.0.0' "$WP_VER" | cut -d. -f-3 | sed 's/^\.0\.0$//')"
+echo "$WP_VER" | grep -iq '[a-z_-]' || WP_VER="$(printf '%s.0.0' "$WP_VER" | cut -d. -f-3 | sed 's/^\.0\.0$//' | sed 's/\.0$//')"
 PHP_VER="$(printf '%s.0.0' "$PHP_VER" | cut -d. -f-2 | sed 's/^\.0$//')"
 
 : >/tmp/prov-key
