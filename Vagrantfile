@@ -33,6 +33,7 @@ Vagrant.configure('2') do |config|
       ip_address = `vagrant ssh #{vm.name} -c 'hostname -I | cut -d " " -f 2' -- -q`.chomp
 
       system("echo '#{ip_address} #{ENV['HOST'].gsub('_', hostname)} # vagrant-#{vm.id}' | sudo tee -a /etc/hosts >/dev/null") unless Vagrant::Util::Platform.windows?
+
       if Vagrant::Util::Platform.windows?
         require 'win32ole'
         hFile = File.expand_path('system32/drivers/etc/hosts', ENV['windir'])
