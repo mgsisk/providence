@@ -10,10 +10,10 @@ Opinionated Vagrant shell provisioner for web development.
 Providence is an opinionated [Vagrant shell provisioner][] for web development
 using [Debian][] base boxes. It includes:
 
-- **Caches** – Memcached, Redis
+- **Caches** – Memcached, Redis
 - **Container Engines** – Docker
-- **Content Management Systems** – WordPress
-- **Databases** – CouchDB, MariaDB, MongoDB, PostgreSQL, SQLite
+- **Content Management Systems** – WordPress
+- **Databases** – CouchDB, MariaDB, MongoDB, PostgreSQL, SQLite
 - **Languages** – Go, Node, Perl, PHP, Python, Ruby, Rust
 - **Package Managers** – Bundler, Cargo, Composer, NPM, Pipenv
 - **Static Site Generators** – Hugo, Jekyll, Pelican, Zola
@@ -23,7 +23,7 @@ using [Debian][] base boxes. It includes:
   xmllint
 - **Version Control Systems** – Git, Mercurial, Subversion
 - **Version Managers** – goenv, nodenv, plenv, pyenv, rbenv, rustup
-- **Web Servers** – Apache, Nginx
+- **Web Servers** – Apache, Nginx
 
 ## Installation
 
