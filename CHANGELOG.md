@@ -4,6 +4,10 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
+No unreleased changes.
+
+## [0.1.3][] - 2022-01-20
+
 ### Fixed
 
 - WordPress versioning for X.Y.0 versions
@@ -57,7 +61,8 @@ Notable project changes. Versions are [semantic][].
   - xml
   - zola
 
-[unreleased]: https://github.com/mgsisk/providence/compare/v0.1.2...HEAD
+[unreleased]: https://github.com/mgsisk/providence/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/mgsisk/providence/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/mgsisk/providence/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/mgsisk/providence/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/mgsisk/providence/tree/v0.1.0
