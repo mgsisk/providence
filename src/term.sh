@@ -7,13 +7,13 @@
 cat <<_ >/tmp/prov-web
 <!DOCTYPE html>
 <meta charset="utf-8">
-<meta name="generator" value="https://github.com/mgsisk/providence">
+<meta name="generator" value="https://github.com/mgsisk/providence" data-providence-version="0.1.3">
 <meta name="viewport" content="initial-scale=1,width=device-width">
 <title>$(hostname -f)</title>
 <style>
 html {
   background: #fff;
-  color: #333;
+  color: #1b1f23;
   font: bold calc(75% + 0.62vw)/1 sans-serif;
   text-align: center;
 }
@@ -49,7 +49,7 @@ a:active {
 </style>
 _
 
-[ -d /srv/web ] && { [ -z "$(find /srv/web -maxdepth 1 -name 'index*')" ] || grep -qsw mgsisk/providence /srv/web/index.html; } && cat <<_ >/srv/web/index.html
+[ -d /srv/web ] && { [ -z "$(find /srv/web -maxdepth 1 -name 'index*')" ] || grep -qsw data-providence-version /srv/web/index.html; } && cat <<_ >/srv/web/index.html
 $(cat /tmp/prov-web)
 $(find /srv/web -maxdepth 2 -mindepth 2 -name 'index*' | sort | sed 's|/srv/web/||' | sed 's|\(.*\)/index.*|\1:\1|' | sed 's|^|<a href="|' | sed 's|:|">|' | sed 's|$|</a>|')
 _
