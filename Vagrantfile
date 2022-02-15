@@ -1,6 +1,6 @@
 Vagrant.configure('2') do |config|
   ENV['ARCH'] ||= ''
-  ENV['HOST'] ||= '_ sys._'
+  ENV['HOST'] ||= '@ sys.@'
   ENV['ZONE'] ||= 'America/Detroit'
 
   bash_aliases = File.join(Dir.home, '.bash_aliases')
@@ -32,13 +32,13 @@ Vagrant.configure('2') do |config|
       hostname = `vagrant ssh #{vm.name} -c 'hostname -f' -- -q`.chomp
       ip_address = `vagrant ssh #{vm.name} -c 'hostname -I | cut -d " " -f 2' -- -q`.chomp
 
-      system("echo '#{ip_address} #{ENV['HOST'].gsub('_', hostname)} # vagrant-#{vm.id}' | sudo tee -a /etc/hosts >/dev/null") unless Vagrant::Util::Platform.windows?
+      system("echo '#{ip_address} #{ENV['HOST'].gsub('@', hostname)} # vagrant-#{vm.id}' | sudo tee -a /etc/hosts >/dev/null") unless Vagrant::Util::Platform.windows?
 
       if Vagrant::Util::Platform.windows?
         require 'win32ole'
         hFile = File.expand_path('system32/drivers/etc/hosts', ENV['windir'])
         shell = WIN32OLE.new('Shell.Application')
-        shell.ShellExecute("echo #{ip_address} #{ENV['HOST'].gsub('_', hostname)} # vagrant-#{vm.id}>> #{hFile}", nil, nil, 'runas')
+        shell.ShellExecute("echo #{ip_address} #{ENV['HOST'].gsub('@', hostname)} # vagrant-#{vm.id}>> #{hFile}", nil, nil, 'runas')
       end
     end
   end
