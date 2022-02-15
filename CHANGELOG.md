@@ -4,7 +4,20 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
-No unreleased changes.
+### Added
+
+- HTTPS support for the sys subdomain
+- MARIA_VER environment variable
+- MONGO_VER environment variable
+- Twenty Twenty-Two to the default themes list for WordPress
+
+### Changed
+
+- CouchDB apt source
+
+### Fixed
+
+- Error that prevented mercurial provisioning
 
 ## [0.1.3][] - 2022-01-20
 

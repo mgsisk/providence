@@ -17,7 +17,7 @@ if grep -qw node /tmp/prov
   cd .nodenv || exit
   src/configure
   make -sC src
-  cd .. || exit
+  cd "$VUD" || exit
 
   cat <<_ >.bash_nodenv
 export NODENV_ROOT=$VUD/.nodenv

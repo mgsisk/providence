@@ -26,6 +26,8 @@ for specific variables is available below.
 | JEKYLL_DIR         | Directory containing JEKLL_CNF or BUNDLER_CNF  | jekyll nginx ruby                        |
 | JEKYLL_SRV         | /srv/web                                       |                                          |
 | [LANG][]           | en_US.UTF-8                                    |                                          |
+| MARIA_VER          | 10.5                                           | mariadb                                  |
+| MONGO_VER          | 5.0                                            | mongodb                                  |
 | NODE_CNF           | /vagrant/package.json                          | node                                     |
 | [NODE_VER][]       | Derived from NODE_CNF                          | node                                     |
 | PELICAN_CNF        | First *conf.py file in PELICAN_DIR             |                                          |
@@ -172,8 +174,8 @@ location (e.g. `$WP_SRV/wp-content/plugins`).
 
 ## WP_PLUGINS
 
-Space-separate list of WordPress plugins to install with [WP-CLI][]. The default
-value, `.`, is a placeholder for the following plugins:
+Space-separated list of WordPress plugins to install with [WP-CLI][]. The
+default value, `.`, is a placeholder for the following plugins:
 
 - [debug-bar-console][]
 - [debug-bar-cron][]
@@ -212,7 +214,7 @@ WordPress theme to activate by default with [WP-CLI][].
 
 ## WP_THEMES
 
-Space-separate list of WordPress themes to install with [WP-CLI][]. The default
+Space-separated list of WordPress themes to install with [WP-CLI][]. The default
 value, `.`, is a placeholder for the following themes:
 
 - [classic][]
@@ -228,6 +230,7 @@ value, `.`, is a placeholder for the following themes:
 - [twentynineteen][]
 - [twentytwenty][]
 - [twentytwentyone][]
+- [twentytwentytwo][]
 
 Providence always installs WP_THEME if specified, regardless of the value of
 WP_THEMES.
@@ -330,6 +333,7 @@ Guest time zone. Must be a valid tz database value (e.g. `America/Detroit`).
 [twentytwelve]: https://wordpress.org/themes/twentytwelve
 [twentytwenty]: https://wordpress.org/themes/twentytwenty
 [twentytwentyone]: https://wordpress.org/themes/twentytwentyone
+[twentytwentytwo]: https://wordpress.org/themes/twentytwentytwo
 [user-switching]: https://wordpress.org/plugins/user-switching
 [webgrind]: https://github.com/jokkedk/webgrind
 [webmin]: https://www.webmin.com
