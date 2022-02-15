@@ -73,7 +73,7 @@ directory, for example, it will run `npm install` for you.
 
 After installation, Providence performs any necessary system configuration.
 Configuration is not customizable; Providence assumes a particular structure and
-workflow for the guest (e.g. the public web root is always `/srv/web`). The
+workflow for the guest (e.g. the guest web root is always `/srv/web`). The
 changes it makes are also unsafe in some situations (e.g. setting the root
 password for MariaDB and other packages to `vagrant`) as it assumes the guest is
 a development environment. You should not use Providence in a production
