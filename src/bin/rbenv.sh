@@ -5,7 +5,7 @@
 # ------------------------------------------------------------------------------
 
 if grep -qw ruby /tmp/prov
- then echo 'Installing ruby-build'
+  then echo 'Installing ruby-build'
   mkdir -p .ruby-build .rbenv
   wget -nc -qO /tmp/ruby-build.tar.gz https://api.github.com/repos/rbenv/ruby-build/tarball
   tar -xkf /tmp/ruby-build.tar.gz -C .ruby-build --strip-components 1 2>/dev/null
@@ -17,7 +17,7 @@ if grep -qw ruby /tmp/prov
   cd .rbenv || exit
   src/configure
   make -sC src
-  cd .. || exit
+  cd "$VUD" || exit
 
   cat <<_ >.bash_rbenv
 export RBENV_ROOT=$VUD/.rbenv
@@ -41,6 +41,7 @@ _
   if [ -s "$BUNDLER_CNF" ]
     then echo 'Installing Bundler packages'
     cd "$(dirname "$BUNDLER_CNF")" || exit
+    rbenv exec bundle config --global silence_root_warning 1
     rbenv exec bundle install --quiet
     cd "$VUD" || exit
   fi
