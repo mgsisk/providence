@@ -11,7 +11,6 @@ if grep -qw wordpress /tmp/prov
   : "${WP_PLUGINS:=.}"
   : "${WP_SRC:=https://develop.svn.wordpress.org/branches}"
   : "${WP_THEMES:=.}"
-  : "${WP_SRV:=/srv/web}"
 
   echo " $WP_PLUGINS wordpress-importer " >/tmp/wp-plugins
   sed -i 's/ \. / debug-bar debug-bar-console debug-bar-cron developer jetpack log-deprecated-notices log-viewer monster-widget piglatin polldaddy query-monitor rewrite-rules-inspector rtl-tester regenerate-thumbnails simply-show-hooks simply-show-ids theme-check theme-test-drive user-switching wordpress-beta-tester /' /tmp/wp-plugins
@@ -63,7 +62,7 @@ if grep -qw wordpress /tmp/prov
   fi
 
   wp option update blogdescription 'Non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Eaque ipsa quae ab illo inventore veritatis et quasi. Itaque earum rerum hic tenetur a sapiente delectus. Nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam.'
-  wp option update blogname "$(hostname -f) quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt"
+  wp option update blogname "$(hostname -f)${WP_SRV#/srv/web} quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt"
   wp option update comments_per_page 5
   wp option update page_comments 1
   wp option update posts_per_page 5
@@ -92,7 +91,7 @@ add_filter(
   'admin_bar_menu',
   function( \$admin_bar ) {
     \$admin_bar->add_node( [
-      'href'   => 'http://$(hostname -f):1234',
+      'href'   => 'http://sys.$(hostname -f)',
       'id'     => 'prov-admin',
       'parent' => 'top-secondary',
       'title'  => __( 'System' ),
@@ -145,7 +144,7 @@ _
     wp option update a8c_developer --format=json '{"project_type":"wporg"}'
   elif [ -s "$COMPOSER_CNF" ] && grep -q '^ *"type": *"wordpress-theme"' "$COMPOSER_CNF"
     then ln -fs "$WP_DIR" "$WP_SRV/wp-content/themes/$(hostname -f | tr '\.' '-')"
-    wp theme enable "$(hostname)-test"
+    wp theme enable "$(hostname -f | tr '\.' '-')"
     wp option update a8c_developer --format=json '{"project_type":"wporg-theme"}'
   fi
 
@@ -179,8 +178,6 @@ _
     sed -i "s|localhost|$(hostname -f)${WP_SRV#/srv/web}|" "$TEST_DIR/qunit/wordpress/index.html"
     sed -i 's|="\.\./[^.]|="../../|' "$TEST_DIR/qunit/wordpress/index.html"
   fi
-
-  [ "$WP_SRV" != /srv/web ] && [ ! -s /srv/web/index.html ] && echo "<meta http-equiv='refresh' content='0; url=${WP_SRV#/srv/web}'>" >/srv/web/index.html
 
   sed -i '/quiet: true/d' .wp-cli/config.yml
 fi
