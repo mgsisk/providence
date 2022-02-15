@@ -7,7 +7,7 @@
 cat <<_ >/tmp/prov-web
 <!DOCTYPE html>
 <meta charset="utf-8">
-<meta name="generator" value="https://github.com/mgsisk/providence" data-providence-version="0.1.3">
+<meta name="generator" value="https://github.com/mgsisk/providence" data-providence-version="0.1.4">
 <meta name="viewport" content="initial-scale=1,width=device-width">
 <title>$(hostname -f)</title>
 <style>
