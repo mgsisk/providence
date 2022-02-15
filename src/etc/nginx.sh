@@ -7,7 +7,8 @@ if dpkg --get-selections | grep -q '^nginx.*\si'
   then echo 'Configuring Nginx'
   cd /etc/nginx || exit
   mkdir -p conf.d/sys conf.d/web /srv/sys/server /srv/web
-  touch /srv/sys/server/index.html
+  rm -f sites-available/default sites-enabled/default
+  touch php-fpm /srv/sys/server/index.html
 
   cat <<_ >sites-available/sys.conf
 server {
@@ -15,6 +16,7 @@ server {
 
   listen 80;
   listen 1234;
+  listen 443 ssl;
 
   root /srv/sys;
 
@@ -30,11 +32,14 @@ server {
     try_files \$uri \$uri/ \$uri.html \$uri.php /index.php?\$args;
   }
 
+  ssl_certificate $CERT;
+  ssl_certificate_key $CKEY;
+
   include /etc/nginx/conf.d/sys/*.conf;
 }
 _
 
-  cat <<_ >conf.d/sys/sub-status.conf
+  cat <<_ >conf.d/sys/stub-status.conf
 location /server {
   stub_status;
 }
@@ -70,7 +75,5 @@ _
 
   ln -fs /etc/nginx/sites-available/sys.conf sites-enabled/sys.conf
   ln -fs /etc/nginx/sites-available/web.conf sites-enabled/web.conf
-  rm -f /etc/ngxin/sites-available/default sites-enabled/default
-  touch php-fpm
   cd "$VUD" || exit
 fi
