@@ -26,14 +26,15 @@ touch .profile /root/.profile
 grep -q '\.profile' .bash_profile || sed -i '1 i\. ~/.profile' .bash_profile
 grep -q '\.profile' /root/.bash_profile || sed -i '1 i\. ~/.profile' /root/.bash_profile
 
+: "${BUNDLER_CNF:=/vagrant/Gemfile}"
 : "${CARGO_CNF:=/vagrant/Cargo.toml}"
 : "${COMPOSER_CNF:=/vagrant/composer.json}"
 : "${DOCKER_CNF:=/vagrant/Dockerfile}"
 : "${DOCKER_COMPOSE_CNF:=/vagrant/docker-compose.yml}"
-: "${BUNDLER_CNF:=/vagrant/Gemfile}"
 : "${GIT_DIR:=/vagrant/.git}"
 : "${GITHUB_DIR:=/vagrant/.github}"
 : "${HG_DIR:=/vagrant/.hg}"
+: "${HOST:=@ sys.@}"
 : "${NODE_CNF:=/vagrant/package.json}"
 : "${PIPENV_CNF:=/vagrant/Pipfile}"
 : "${PROVIDENCE:=.}"
@@ -80,6 +81,8 @@ PHP_VER="$(printf '%s.0.0' "$PHP_VER" | cut -d. -f-2 | sed 's/^\.0$//')"
 [ -d "$SVN_DIR" ] && echo 'svn' >>/tmp/prov-key
 [ -d "$ZOLA_DIR" ] && echo 'nginx zola' >>/tmp/prov-key
 [ -n "$GO_VER" ] && echo 'go' >>/tmp/prov-key
+[ -n "$MARIA_VER" ] && echo 'mariadb' >>/tmp/prov-key
+[ -n "$MONGO_VER" ] && echo 'mongodb' >>/tmp/prov-key
 [ -n "$PERL_VER" ] && echo 'perl' >>/tmp/prov-key
 [ -s "$SHELLSPEC_CNF" ] && echo 'shell' >>/tmp/prov-key
 { [ -d "$WEB_DIR" ] || [ -s "$CERT" ] || [ -s "$CKEY" ]; } && echo 'nginx' >>/tmp/prov-key
@@ -96,6 +99,8 @@ sort -uo /tmp/prov-key /tmp/prov-key
 
 : "${CERT:=/etc/ssl/certs/ssl-cert-snakeoil.pem}"
 : "${CKEY:=/etc/ssl/private/ssl-cert-snakeoil.key}"
+: "${MARIA_VER:=10.5}"
+: "${MONGO_VER:=5.0}"
 
 echo " $PROVIDENCE " >/tmp/prov
 sed -i 's/ \* / apache couchdb docker git github go hg hugo jekyll mailhog mariadb memcached mongodb nginx node pelican perl php postgres python redis ruby rust shell sqlite svn webmin wordpress xml zola /' /tmp/prov
