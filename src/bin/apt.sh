@@ -9,12 +9,12 @@
 cd /etc/apt/sources.list.d || exit
 : >prov.list
 grep -qw apache /tmp/prov && echo "deb https://packages.sury.org/apache2 $LSBC main" >>prov.list
-grep -qw couchdb /tmp/prov && echo "deb https://apache.bintray.com/couchdb-deb $LSBC main" >>prov.list
+grep -qw couchdb /tmp/prov && echo "deb https://apache.jfrog.io/artifactory/couchdb-deb $LSBC main" >>prov.list
 grep -qw docker /tmp/prov && echo "deb https://download.docker.com/linux/$LSBI $LSBC stable" >>prov.list
 grep -qw git /tmp/prov && echo "deb https://packagecloud.io/github/git-lfs/$LSBI $LSBC main" >>prov.list
 grep -qw github /tmp/prov && echo "deb https://cli.github.com/packages $LSBC main" >>prov.list
-grep -qw mariadb /tmp/prov && echo "deb https://downloads.mariadb.com/MariaDB/mariadb-10.5/repo/$LSBI $LSBC main" >>prov.list
-grep -qw mongodb /tmp/prov && echo "deb https://repo.mongodb.org/apt/$LSBI $LSBC/mongodb-org/4.4 main" >>prov.list
+grep -qw mariadb /tmp/prov && echo "deb https://downloads.mariadb.com/MariaDB/mariadb-$MARIA_VER/repo/$LSBI $LSBC main" >>prov.list
+grep -qw mongodb /tmp/prov && echo "deb https://repo.mongodb.org/apt/$LSBI $LSBC/mongodb-org/$MONGO_VER main" >>prov.list
 grep -qw nginx /tmp/prov && echo "deb https://packages.sury.org/nginx $LSBC main" >>prov.list
 grep -qw node /tmp/prov && wget -nc -qO /tmp/node.v https://deb.nodesource.com/setup_current.x && echo "deb https://deb.nodesource.com/$(grep ^NODEREPO= /tmp/node.v | cut -d= -f2 | tr -d '"') $LSBC main" >>prov.list
 grep -qw php /tmp/prov && echo "deb https://packages.sury.org/php $LSBC main" >>prov.list
@@ -24,12 +24,12 @@ cd "$VUD" || exit
 
 cd /etc/apt/trusted.gpg.d || exit
 grep -qw apache /tmp/prov && wget -nc -qO prov-apache.gpg https://packages.sury.org/apache2/apt.gpg
-grep -qw couchdb /tmp/prov && wget -nc -qO prov-couchdb.asc 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8756C4F765C9AC3CB6B85D62379CE192D401AB61'
+grep -qw couchdb /tmp/prov && wget -nc -qO prov-couchdb.asc https://couchdb.apache.org/repo/keys.asc
 grep -qw docker /tmp/prov && wget -nc -qO prov-docker.asc "https://download.docker.com/linux/$LSBI/gpg"
 grep -qw git /tmp/prov && wget -nc -qO prov-git-lfs.asc https://packagecloud.io/github/git-lfs/gpgkey
 grep -qw github /tmp/prov && wget -nc -qO prov-github.asc 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC99B11DEB97541F0'
 grep -qw mariadb /tmp/prov && wget -nc -qO prov-mariadb.asc 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xF1656F24C74CD1D8'
-grep -qw mongodb /tmp/prov && wget -nc -qO prov-mongodb.asc https://www.mongodb.org/static/pgp/server-4.4.asc
+grep -qw mongodb /tmp/prov && wget -nc -qO prov-mongodb.asc "https://www.mongodb.org/static/pgp/server-$MONGO_VER.asc"
 grep -qw nginx /tmp/prov && wget -nc -qO prov-nginx.gpg https://packages.sury.org/nginx/apt.gpg
 grep -qw node /tmp/prov && wget -nc -qO prov-node.asc https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 grep -qw php /tmp/prov && wget -nc -qO prov-php.gpg https://packages.sury.org/php/apt.gpg
@@ -53,7 +53,10 @@ grep -qw apache /tmp/prov && cat <<_ >>/tmp/prov-apt
 apache2
 libapache2-mod-fcgid
 _
-grep -qw couchdb /tmp/prov && echo 'couchdb' >>/tmp/prov-apt
+grep -qw couchdb /tmp/prov && cat <<_ >>/tmp/prov-apt
+$(apt-cache search '^couch-libmozjs[0-9]*-[^a-z]*$' | grep -o '^couch[^ ]*')
+couchdb
+_
 grep -qw docker /tmp/prov && cat <<_ >>/tmp/prov-apt
 containerd.io
 docker-ce
@@ -65,7 +68,7 @@ git-lfs
 _
 grep -qw github /tmp/prov && echo 'gh' >>/tmp/prov-apt
 grep -qw go /tmp/prov && echo 'golang-go' >>/tmp/prov-apt
-grep -qw hg /tmp/prov && cat echo 'mercurial' >>/tmp/prov-apt
+grep -qw hg /tmp/prov && echo 'mercurial' >>/tmp/prov-apt
 grep -qw hugo /tmp/prov && echo 'hugo' >>/tmp/prov-apt
 grep -qw mailhog /tmp/prov && echo 'postfix' >>/tmp/prov-apt
 grep -qw mariadb /tmp/prov && echo 'mariadb-server' >>/tmp/prov-apt
