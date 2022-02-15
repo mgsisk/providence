@@ -8,7 +8,7 @@ init=$(date +%s)
 
 export DEBIAN_FRONTEND=noninteractive
 
-echo 'Provisioning with Providence v0.1.3'
+echo 'Provisioning with Providence v0.1.4'
 
 VUD=$(getent passwd vagrant | cut -d: -f6) && cd "$VUD" || exit
 LSBC=$(lsb_release -cs | tr '[:upper:]' '[:lower:]')
