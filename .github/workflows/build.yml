@@ -13,7 +13,15 @@ jobs:
       - run: npm clean-install
       - uses: codacy/codacy-analysis-cli-action@master
         with:
+          format: sarif
+          gh-code-scanning-compat: true
+          max-allowed-issues: 2147483647
+          output: results.sarif
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          verbose: true
+      - uses: github/codeql-action/upload-sarif@main
+        with:
+          sarif_file: results.sarif
 
   test:
     runs-on: ubuntu-latest
