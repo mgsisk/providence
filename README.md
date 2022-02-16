@@ -80,7 +80,7 @@ anyone that has found this project useful.
 [other works]: THANKS.md
 [security]: SECURITY.md
 [support resources]: SUPPORT.md
-[url-build]: https://github.com/mgsisk/github-actions-test/actions?query=workflow%3Abuild
+[url-build]: https://github.com/mgsisk/providence/actions?query=workflow%3Abuild
 [url-codacy]: https://app.codacy.com/gh/mgsisk/providence
 [url-funding]: CONTRIBUTING.md#funding
 [url-release]: https://github.com/mgsisk/providence/releases
