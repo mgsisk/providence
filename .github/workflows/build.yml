@@ -13,6 +13,11 @@ jobs:
       - run: npm clean-install
       - uses: codacy/codacy-analysis-cli-action@master
         with:
+          max-allowed-issues: 2147483647
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          upload: true
+      - uses: codacy/codacy-analysis-cli-action@master
+        with:
           format: sarif
           gh-code-scanning-compat: true
           max-allowed-issues: 2147483647
