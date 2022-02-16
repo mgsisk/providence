@@ -28,7 +28,7 @@ Vagrant.configure('2') do |config|
 
   config.trigger.after :reload, :resume, :up do |trig|
     trig.info = 'Updating sytstem hosts...'
-    trig.ruby do |env, vm|
+    trig.ruby do |_env, vm|
       hostname = `vagrant ssh #{vm.name} -c 'hostname -f' -- -q`.chomp
       ip_address = `vagrant ssh #{vm.name} -c 'hostname -I | cut -d " " -f 2' -- -q`.chomp
 
@@ -54,7 +54,7 @@ end
 
 def delete_hosts(trig)
   trig.info = 'Updating system hosts...'
-  trig.ruby do |env, vm|
+  trig.ruby do |_env, vm|
     system("sudo sed -i '' '/ # vagrant-#{vm.id}$/d' /etc/hosts") unless Vagrant::Util::Platform.windows?
     if Vagrant::Util::Platform.windows?
       require 'win32ole'
