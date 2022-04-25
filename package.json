@@ -43,6 +43,6 @@
     "chokidar-cli": "^3.0.0",
     "remark-cli": "^10.0.1",
     "shellcheck": "^1.0.0",
-    "yaml-lint": "^1.2.4"
+    "yaml-lint": "^1.6.0"
   }
 }
