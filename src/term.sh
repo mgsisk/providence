@@ -11,40 +11,66 @@ cat <<_ >/tmp/prov-web
 <meta name="viewport" content="initial-scale=1,width=device-width">
 <title>$(hostname -f)</title>
 <style>
+:root {
+  --color-back: #fff;
+  --color-text: #333;
+  --color-link: #82f;
+}
+
 html {
-  background: #fff;
-  color: #1b1f23;
-  font: bold calc(75% + 0.62vw)/1 sans-serif;
+  background: var(--color-back);
+  color: var(--color-text);
+  font: bold calc(0.8em + 1vw)/1 system-ui;
   text-align: center;
 }
 
 body {
   display: flex;
   flex-flow: column;
-  margin: 1rem;
+  gap: 0.5em;
+  margin: 1em;
 }
 
 a {
   color: inherit;
-  padding: 1rem;
+  padding: 1em;
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
-  color: #0366d6;
-  outline: 0.1rem dashed;
+  color: var(--color-link);
+  outline: 0.1em dashed;
 }
 
 a:active {
-  color: #22863a;
   outline-style: solid;
 }
 
 @media (prefers-color-scheme: dark) {
-  html {background: #1b1f23; color: #fff;}
-  a:focus, a:hover {color: #ffd33d;}
-  a:active {color: #b392f0;}
+  :root {
+    --color-back: #333;
+    --color-text: #fff;
+    --color-link: #C9f;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-text: #000;
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    --color-back: #000;
+  }
+}
+
+@media (prefers-contrast: less) {
+  body {
+    opacity: 0.62;
+  }
 }
 </style>
 _

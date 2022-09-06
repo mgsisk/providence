@@ -90,7 +90,7 @@ provisioners after Providence.
 
 Once configuration is complete, Providence will check for known project types to
 see if there's anything it should build for you. This includes generating static
-sites using Hugo, Jekyll, Pelican, or Zola, instsalling and configuring the
+sites using Hugo, Jekyll, Pelican, or Zola, installing and configuring the
 WordPress content management system, or linking a project directory to the
 guests web root. By default, most of these setups are mutually exclusive as
 they'll end up using the same web root on the guest, but you can change their

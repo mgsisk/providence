@@ -26,7 +26,7 @@ grep -qw apache /tmp/prov && wget -nc -qO prov-apache.gpg https://packages.sury.
 grep -qw couchdb /tmp/prov && wget -nc -qO prov-couchdb.asc https://couchdb.apache.org/repo/keys.asc
 grep -qw docker /tmp/prov && wget -nc -qO prov-docker.asc "https://download.docker.com/linux/$LSBI/gpg"
 grep -qw git /tmp/prov && wget -nc -qO prov-git-lfs.asc https://packagecloud.io/github/git-lfs/gpgkey
-grep -qw github /tmp/prov && wget -nc -qO prov-github.asc 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC99B11DEB97541F0'
+grep -qw github /tmp/prov && wget -nc -qO prov-github.gpg https://cli.github.com/packages/githubcli-archive-keyring.gpg
 grep -qw mariadb /tmp/prov && wget -nc -qO prov-mariadb.asc 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xF1656F24C74CD1D8'
 grep -qw mongodb /tmp/prov && wget -nc -qO prov-mongodb.asc "https://www.mongodb.org/static/pgp/server-$MONGO_VER.asc"
 grep -qw nginx /tmp/prov && wget -nc -qO prov-nginx.gpg https://packages.sury.org/nginx/apt.gpg
