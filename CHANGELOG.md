@@ -4,7 +4,10 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
-No unreleased changes.
+### Added
+
+- LOGIN_SHELL environment variable
+- LOGIN_SHELL_CNF environment variable
 
 ## [0.1.4][] - 2022-02-15
 
