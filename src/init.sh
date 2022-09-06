@@ -34,7 +34,6 @@ grep -q '\.profile' /root/.bash_profile || sed -i '1 i\. ~/.profile' /root/.bash
 : "${GIT_DIR:=/vagrant/.git}"
 : "${GITHUB_DIR:=/vagrant/.github}"
 : "${HG_DIR:=/vagrant/.hg}"
-: "${HOST:=@ sys.@}"
 : "${NODE_CNF:=/vagrant/package.json}"
 : "${PIPENV_CNF:=/vagrant/Pipfile}"
 : "${PROVIDENCE:=.}"
@@ -99,8 +98,8 @@ sort -uo /tmp/prov-key /tmp/prov-key
 
 : "${CERT:=/etc/ssl/certs/ssl-cert-snakeoil.pem}"
 : "${CKEY:=/etc/ssl/private/ssl-cert-snakeoil.key}"
-: "${MARIA_VER:=10.5}"
-: "${MONGO_VER:=5.0}"
+: "${MARIA_VER:=10.10}"
+: "${MONGO_VER:=6.0}"
 
 echo " $PROVIDENCE " >/tmp/prov
 sed -i 's/ \* / apache couchdb docker git github go hg hugo jekyll mailhog mariadb memcached mongodb nginx node pelican perl php postgres python redis ruby rust shell sqlite svn webmin wordpress xml zola /' /tmp/prov
