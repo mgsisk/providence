@@ -9,6 +9,10 @@ Notable project changes. Versions are [semantic][].
 - LOGIN_SHELL environment variable
 - LOGIN_SHELL_CNF environment variable
 
+### Changed
+
+- Key management for apt sources
+
 ## [0.1.4][] - 2022-02-15
 
 ### Added
