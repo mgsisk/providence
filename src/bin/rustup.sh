@@ -12,7 +12,7 @@ if grep -qw rust /tmp/prov
   rustup-init -y >/dev/null 2>/dev/null
 
   echo "$PATH" | grep -q '/\.cargo/' || . "$VUD/.cargo/env"
-  grep -q '\.cargo' .bash_profile || echo '. ~/.cargo/env' >>.bash_profile
+  grep -q '\.cargo' "$LOGIN_SHELL_CNF" || echo '. ~/.cargo/env' >>"$LOGIN_SHELL_CNF"
 
   if [ -n "$RUST_VER" ] && ! rustup default | cut -d- -f1 | grep -qw "$RUST_VER"
     then echo "Installing Rust $RUST_VER"

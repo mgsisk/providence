@@ -4,8 +4,14 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
+### Added
+
+- LOGIN_SHELL environment variable
+- LOGIN_SHELL_CNF environment variable
+
 ### Changed
 
+- Key management for apt sources
 - MARIA_VER default to 10.10
 - MONGO_VER default to 6.0
 

@@ -8,21 +8,20 @@
 
 cd /etc/apt/sources.list.d || exit
 : >prov.list
-grep -qw apache /tmp/prov && echo "deb https://packages.sury.org/apache2 $LSBC main" >>prov.list
-grep -qw couchdb /tmp/prov && echo "deb https://apache.jfrog.io/artifactory/couchdb-deb $LSBC main" >>prov.list
-grep -qw docker /tmp/prov && echo "deb https://download.docker.com/linux/$LSBI $LSBC stable" >>prov.list
-grep -qw git /tmp/prov && echo "deb https://packagecloud.io/github/git-lfs/$LSBI $LSBC main" >>prov.list
-grep -qw github /tmp/prov && echo "deb https://cli.github.com/packages $LSBC main" >>prov.list
-grep -qw mariadb /tmp/prov && echo "deb https://downloads.mariadb.com/MariaDB/mariadb-$MARIA_VER/repo/$LSBI $LSBC main" >>prov.list
-grep -qw mongodb /tmp/prov && echo "deb https://repo.mongodb.org/apt/$LSBI $LSBC/mongodb-org/$MONGO_VER main" >>prov.list
-grep -qw nginx /tmp/prov && echo "deb https://packages.sury.org/nginx $LSBC main" >>prov.list
-grep -qw node /tmp/prov && wget -nc -qO /tmp/node.v https://deb.nodesource.com/setup_current.x && echo "deb https://deb.nodesource.com/$(grep ^NODEREPO= /tmp/node.v | cut -d= -f2 | tr -d '"') $LSBC main" >>prov.list
-grep -qw php /tmp/prov && echo "deb https://packages.sury.org/php $LSBC main" >>prov.list
-grep -qw postgres /tmp/prov && echo "deb https://apt.postgresql.org/pub/repos/apt $LSBC-pgdg main" >>prov.list
-grep -qw webmin /tmp/prov && echo 'deb https://download.webmin.com/download/repository sarge contrib' >>prov.list
+grep -qw apache /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-apache.gpg] https://packages.sury.org/apache2 $LSBC main" >>prov.list
+grep -qw couchdb /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-couchdb.asc] https://apache.jfrog.io/artifactory/couchdb-deb $LSBC main" >>prov.list
+grep -qw docker /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-docker.asc] https://download.docker.com/linux/$LSBI $LSBC stable" >>prov.list
+grep -qw git /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-git-lfs.asc] https://packagecloud.io/github/git-lfs/$LSBI $LSBC main" >>prov.list
+grep -qw mariadb /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-mariadb.asc] https://downloads.mariadb.com/MariaDB/mariadb-$MARIA_VER/repo/$LSBI $LSBC main" >>prov.list
+grep -qw mongodb /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-mongodb.asc] https://repo.mongodb.org/apt/$LSBI $LSBC/mongodb-org/$MONGO_VER main" >>prov.list
+grep -qw nginx /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-nginx.gpg] https://packages.sury.org/nginx $LSBC main" >>prov.list
+grep -qw node /tmp/prov && wget -nc -qO /tmp/node.v https://deb.nodesource.com/setup_current.x && echo "deb [signed-by=/usr/share/keyrings/prov-node.asc] https://deb.nodesource.com/$(grep ^NODEREPO= /tmp/node.v | cut -d= -f2 | tr -d '"') $LSBC main" >>prov.list
+grep -qw php /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-php.gpg] https://packages.sury.org/php $LSBC main" >>prov.list
+grep -qw postgres /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-postgresql.asc] https://apt.postgresql.org/pub/repos/apt $LSBC-pgdg main" >>prov.list
+grep -qw webmin /tmp/prov && echo 'deb [signed-by=/usr/share/keyrings/prov-webmin.asc] https://download.webmin.com/download/repository sarge contrib' >>prov.list
 cd "$VUD" || exit
 
-cd /etc/apt/trusted.gpg.d || exit
+cd /usr/share/keyrings || exit
 grep -qw apache /tmp/prov && wget -nc -qO prov-apache.gpg https://packages.sury.org/apache2/apt.gpg
 grep -qw couchdb /tmp/prov && wget -nc -qO prov-couchdb.asc https://couchdb.apache.org/repo/keys.asc
 grep -qw docker /tmp/prov && wget -nc -qO prov-docker.asc "https://download.docker.com/linux/$LSBI/gpg"
@@ -48,6 +47,7 @@ ssl-cert
 unzip
 vim
 zip
+$(grep -q "$LOGIN_SHELL" /etc/shells || echo "$LOGIN_SHELL" | rev | cut -d/ -f1 | rev)
 _
 grep -qw apache /tmp/prov && cat <<_ >>/tmp/prov-apt
 apache2
