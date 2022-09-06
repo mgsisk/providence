@@ -19,15 +19,15 @@ if grep -qw ruby /tmp/prov
   make -sC src
   cd "$VUD" || exit
 
-  cat <<_ >.bash_rbenv
+  cat <<_ >.prov_rbenv
 export RBENV_ROOT=$VUD/.rbenv
 export PATH=\$RBENV_ROOT/bin:\$PATH
 eval "\$(rbenv init -)"
 _
 
-  [ -n "$RBENV_ROOT" ] || . "$VUD/.bash_rbenv"
-  grep -q '\.bash_rbenv' .bash_profile || echo '. ~/.bash_rbenv' >>.bash_profile
-  grep -q '\.bash_rbenv' /root/.bash_profile || echo ". $VUD/.bash_rbenv" >>/root/.bash_profile
+  [ -n "$RBENV_ROOT" ] || . "$VUD/.prov_rbenv"
+  grep -q '\.prov_rbenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_rbenv' >>"$LOGIN_SHELL_CNF"
+  grep -q '\.prov_rbenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_rbenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$RUBY_VER" ] && ! rbenv global | grep -qw "$RUBY_VER"
     then echo "Installing Ruby $RUBY_VER"
