@@ -10,16 +10,16 @@ if grep -qw python /tmp/prov
   wget -nc -qO /tmp/pyenv.tar.gz https://api.github.com/repos/pyenv/pyenv/tarball
   tar -xkf /tmp/pyenv.tar.gz -C .pyenv --strip-components 1 2>/dev/null
 
-  cat <<_ >.bash_pyenv
+  cat <<_ >.prov_pyenv
 export PIPENV_VENV_IN_PROJECT=:
 export PYENV_ROOT=$VUD/.pyenv
 export PATH=\$PYENV_ROOT/bin:$VUD/.local/bin:\$PATH
 eval "\$(pyenv init -)"
 _
 
-  [ -n "$PYENV_ROOT" ] || . "$VUD/.bash_pyenv"
-  grep -q '\.bash_pyenv' .bash_profile || echo '. ~/.bash_pyenv' >>.bash_profile
-  grep -q '\.bash_pyenv' /root/.bash_profile || echo ". $VUD/.bash_pyenv" >>/root/.bash_profile
+  [ -n "$PYENV_ROOT" ] || . "$VUD/.prov_pyenv"
+  grep -q '\.prov_pyenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_pyenv' >>"$LOGIN_SHELL_CNF"
+  grep -q '\.prov_pyenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_pyenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$PYTHON_VER" ] && ! pyenv global | grep -qw "$PYTHON_VER"
     then echo "Installing Python $PYTHON_VER"
