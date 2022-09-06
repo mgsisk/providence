@@ -10,7 +10,7 @@ if grep -qw go /tmp/prov
   wget -nc -qO /tmp/goenv.tar.gz https://api.github.com/repos/syndbg/goenv/tarball
   tar -xkf /tmp/goenv.tar.gz -C .goenv --strip-components 1 2>/dev/null
 
-  cat <<_ >.bash_goenv
+  cat <<_ >.prov_goenv
 export GOPATH=$VUD/.go
 export GOENV_GOPATH_PREFIX=\$GOPATH
 export GOENV_ROOT=$VUD/.goenv
@@ -19,9 +19,9 @@ eval "\$(goenv init -)"
 export PATH=\$GOROOT/bin:\$PATH:\$GOPATH/bin
 _
 
-  [ -n "$GOENV_ROOT" ] || . "$VUD/.bash_goenv"
-  grep -q '\.bash_goenv' .bash_profile || echo '. ~/.bash_goenv' >>.bash_profile
-  grep -q '\.bash_goenv' /root/.bash_profile || echo ". $VUD/.bash_goenv" >>/root/.bash_profile
+  [ -n "$GOENV_ROOT" ] || . "$VUD/.prov_goenv"
+  grep -q '\.prov_goenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_goenv' >>"$LOGIN_SHELL_CNF"
+  grep -q '\.prov_goenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_goenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$GO_VER" ] && ! goenv global | grep -qw "$GO_VER"
     then echo "Installing Go $GO_VER"
