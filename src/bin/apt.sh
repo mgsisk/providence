@@ -48,6 +48,7 @@ ssl-cert
 unzip
 vim
 zip
+$(grep -q "$LOGIN_SHELL" /etc/shells || echo "$LOGIN_SHELL" | rev | cut -d/ -f1 | rev)
 _
 grep -qw apache /tmp/prov && cat <<_ >>/tmp/prov-apt
 apache2
