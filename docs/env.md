@@ -7,62 +7,75 @@ can specify most of them through your Vagrantfile. The following table
 summarizes the user-settable variables Providence recognizes. More information
 for specific variables is available below.
 
-| Variable           | Default value                                  | Implied keywords                         |
-| ------------------ | ---------------------------------------------- | ---------------------------------------- |
-| BUNDLER_CNF        | /vagrant/Gemfile                               | ruby                                     |
-| CARGO_CNF          | /vagrant/Cargo.toml                            | rust                                     |
-| CERT               | /etc/ssl/certs/ssl-cert-snakeoil.pem           | nginx                                    |
-| CKEY               | /etc/ssl/private/ssl-cert-snakeoil.key         | nginx                                    |
-| COMPOSER_CNF       | /vagrant/composer.json                         | php                                      |
-| DOCKER_CNF         | /vagrant/Dockerfile                            | docker                                   |
-| DOCKER_COMPOSE_CNF | /vagrant/docker-compose.yml                    | docker                                   |
-| GIT_DIR            | /vagrant/.git                                  | git                                      |
-| GITHUB_DIR         | /vagrant/.github                               | github                                   |
-| GO_VER             |                                                | go                                       |
-| HG_DIR             | /vagrant/.hg                                   | hg                                       |
-| HUGO_DIR           |                                                | hugo nginx                               |
-| HUGO_SRV           | /srv/web                                       |                                          |
-| JEKYLL_CNF         | First _config TOML or YAML file in JEKYLL_DIR  |                                          |
-| JEKYLL_DIR         | Directory containing JEKLL_CNF or BUNDLER_CNF  | jekyll nginx ruby                        |
-| JEKYLL_SRV         | /srv/web                                       |                                          |
-| [LANG][]           | en_US.UTF-8                                    |                                          |
-| MARIA_VER          | 10.5                                           | mariadb                                  |
-| MONGO_VER          | 5.0                                            | mongodb                                  |
-| NODE_CNF           | /vagrant/package.json                          | node                                     |
-| [NODE_VER][]       | Derived from NODE_CNF                          | node                                     |
-| PELICAN_CNF        | First *conf.py file in PELICAN_DIR             |                                          |
-| PELICAN_DIR        | Directory containing PELICAN_CNF or PIPENV_CNF | nginx pelican python                     |
-| PELICAN_SRV        | /srv/web                                       |                                          |
-| PERL_VER           |                                                | perl                                     |
-| [PHP_VER][]        | Dervied from WP_CNF or COMPOSER_CNF            | php                                      |
-| PIPENV_CNF         | /vagrant/Pipfile                               | python                                   |
-| [PROVIDENCE][]     | .                                              |                                          |
-| PYTHON_VER         | Derived fro PIPENV_CNF                         | python                                   |
-| [RUBY_VER][]       | Derived from BUNDLER_CNF                       | ruby                                     |
-| RUST_CNF           | /vagrant/rust-toolchain.toml                   | rust                                     |
-| RUST_VER           | Derived from RUST_CNF                          | rust                                     |
-| SHELLSPEC_CNF      | /vagrant/.shellspec                            | shell                                    |
-| SVN_DIR            | /vagrant/.svn                                  | svn                                      |
-| TEST_DIR           | /vagrant/test                                  |                                          |
-| WEB_DIR            |                                                | nginx                                    |
-| WEB_SRV            | /srv/web                                       |                                          |
-| WP_CNF             | WP_DIR/readme.txt                              |                                          |
-| [WP_DATA][]        | <https://github.com/WPTT/theme-test-data>      | apache mailhog mariadb php svn wordpress |
-| [WP_DIR][]         | Directory containing WP_CNF or COMPOSER_CNF    | apache mailhog mariadb php svn wordpress |
-| [WP_PLUGINS][]     | .                                              | apache mailhog mariadb php svn wordpress |
-| [WP_SRC][]         | <https://develop.svn.wordpress.org/branches>   | apache mailhog mariadb php svn wordpress |
-| WP_SRV             | /srv/web                                       |                                          |
-| [WP_THEME][]       |                                                | apache mailhog mariadb php svn wordpress |
-| [WP_THEMES][]      | .                                              | apache mailhog mariadb php svn wordpress |
-| [WP_VER][]         | Derived from WP_CNF or COMPOSER_CNF            | apache mailhog mariadb php svn wordpress |
-| ZOLA_CNF           | ZOLA_DIR/config.toml                           |                                          |
-| ZOLA_DIR           | Directory containing ZOLA_CNF                  | nginx zola                               |
-| ZOLA_SRV           | /srv/web                                       |                                          |
-| [ZONE][]           |                                                |                                          |
+| Variable            | Default value                                  | Implied keywords                         |
+| ------------------- | ---------------------------------------------- | ---------------------------------------- |
+| BUNDLER_CNF         | /vagrant/Gemfile                               | ruby                                     |
+| CARGO_CNF           | /vagrant/Cargo.toml                            | rust                                     |
+| CERT                | /etc/ssl/certs/ssl-cert-snakeoil.pem           | nginx                                    |
+| CKEY                | /etc/ssl/private/ssl-cert-snakeoil.key         | nginx                                    |
+| COMPOSER_CNF        | /vagrant/composer.json                         | php                                      |
+| DOCKER_CNF          | /vagrant/Dockerfile                            | docker                                   |
+| DOCKER_COMPOSE_CNF  | /vagrant/docker-compose.yml                    | docker                                   |
+| GIT_DIR             | /vagrant/.git                                  | git                                      |
+| GITHUB_DIR          | /vagrant/.github                               | github                                   |
+| GO_VER              |                                                | go                                       |
+| HG_DIR              | /vagrant/.hg                                   | hg                                       |
+| HUGO_DIR            |                                                | hugo nginx                               |
+| HUGO_SRV            | /srv/web                                       |                                          |
+| JEKYLL_CNF          | First _config TOML or YAML file in JEKYLL_DIR  |                                          |
+| JEKYLL_DIR          | Directory containing JEKLL_CNF or BUNDLER_CNF  | jekyll nginx ruby                        |
+| JEKYLL_SRV          | /srv/web                                       |                                          |
+| [LANG][]            | en_US.UTF-8                                    |                                          |
+| [LOGIN_SHELL][]     | /bin/bash                                      |                                          |
+| [LOGIN_SHELL_CNF][] | .bash_profile                                  |                                          |
+| MARIA_VER           | 10.5                                           | mariadb                                  |
+| MONGO_VER           | 5.0                                            | mongodb                                  |
+| NODE_CNF            | /vagrant/package.json                          | node                                     |
+| [NODE_VER][]        | Derived from NODE_CNF                          | node                                     |
+| PELICAN_CNF         | First *conf.py file in PELICAN_DIR             |                                          |
+| PELICAN_DIR         | Directory containing PELICAN_CNF or PIPENV_CNF | nginx pelican python                     |
+| PELICAN_SRV         | /srv/web                                       |                                          |
+| PERL_VER            |                                                | perl                                     |
+| [PHP_VER][]         | Dervied from WP_CNF or COMPOSER_CNF            | php                                      |
+| PIPENV_CNF          | /vagrant/Pipfile                               | python                                   |
+| [PROVIDENCE][]      | .                                              |                                          |
+| PYTHON_VER          | Derived from PIPENV_CNF                        | python                                   |
+| [RUBY_VER][]        | Derived from BUNDLER_CNF                       | ruby                                     |
+| RUST_CNF            | /vagrant/rust-toolchain.toml                   | rust                                     |
+| RUST_VER            | Derived from RUST_CNF                          | rust                                     |
+| SHELLSPEC_CNF       | /vagrant/.shellspec                            | shell                                    |
+| SVN_DIR             | /vagrant/.svn                                  | svn                                      |
+| TEST_DIR            | /vagrant/test                                  |                                          |
+| WEB_DIR             |                                                | nginx                                    |
+| WEB_SRV             | /srv/web                                       |                                          |
+| WP_CNF              | WP_DIR/readme.txt                              |                                          |
+| [WP_DATA][]         | <https://github.com/WPTT/theme-test-data>      | apache mailhog mariadb php svn wordpress |
+| [WP_DIR][]          | Directory containing WP_CNF or COMPOSER_CNF    | apache mailhog mariadb php svn wordpress |
+| [WP_PLUGINS][]      | .                                              | apache mailhog mariadb php svn wordpress |
+| [WP_SRC][]          | <https://develop.svn.wordpress.org/branches>   | apache mailhog mariadb php svn wordpress |
+| WP_SRV              | /srv/web                                       |                                          |
+| [WP_THEME][]        |                                                | apache mailhog mariadb php svn wordpress |
+| [WP_THEMES][]       | .                                              | apache mailhog mariadb php svn wordpress |
+| [WP_VER][]          | Derived from WP_CNF or COMPOSER_CNF            | apache mailhog mariadb php svn wordpress |
+| ZOLA_CNF            | ZOLA_DIR/config.toml                           |                                          |
+| ZOLA_DIR            | Directory containing ZOLA_CNF                  | nginx zola                               |
+| ZOLA_SRV            | /srv/web                                       |                                          |
+| [ZONE][]            |                                                |                                          |
 
 ## LANG
 
 Guest locale. Must be a locale recognized by the guest.
+
+## LOGIN_SHELL
+
+Login shell to use. Defaults to `/bin/bash`. Providence will attempt to install
+the preferred shell if LOGIN_SHELL is not listed in `/etc/shells`.
+
+## LOGIN_SHELL_CNF
+
+Login shell config filename. Defaults to `.bash_profile`. Providence will source
+`.profile` and add PATH updates and `eval` calls from applications like `nodenv`
+to this file on the guest.
 
 ## NODE_VER
 
@@ -273,6 +286,8 @@ Guest time zone. Must be a valid tz database value (e.g. `America/Detroit`).
 [lang]: #lang
 [log-deprecated-notices]: https://wordpress.org/plugins/log-deprecated-notices
 [log-viewer]: https://wordpress.org/plugins/log-viewer
+[login_shell_cnf]: #login_shell_cnf
+[login_shell]: #login_shell
 [mailhog]: https://github.com/mailhog/MailHog
 [mariadb]: https://mariadb.org
 [memcached]: https://memcached.org

@@ -15,15 +15,15 @@ if grep -qw perl /tmp/prov
   wget -nc -qO /tmp/perl-build.tar.gz https://api.github.com/repos/tokuhirom/perl-build/tarball
   tar -xkf /tmp/perl-build.tar.gz -C .plenv/plugins/perl-build --strip-components 1 2>/dev/null
 
-  cat <<_ >.bash_plenv
+  cat <<_ >.prov_plenv
 export PLENV_ROOT=$VUD/.plenv
 export PATH=\$PLENV_ROOT/bin:\$PATH
 eval "\$(plenv init -)"
 _
 
-  [ -n "$PLENV_ROOT" ] || . "$VUD/.bash_plenv"
-  grep -q '\.bash_plenv' .bash_profile || echo '. ~/.bash_plenv' >>.bash_profile
-  grep -q '\.bash_plenv' /root/.bash_profile || echo ". $VUD/.bash_plenv" >>/root/.bash_profile
+  [ -n "$PLENV_ROOT" ] || . "$VUD/.prov_plenv"
+  grep -q '\.prov_plenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_plenv' >>"$LOGIN_SHELL_CNF"
+  grep -q '\.prov_plenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_plenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$PERL_VER" ] && ! plenv global | grep -qw "$PERL_VER"
     then echo "Installing Perl $PERL_VER"

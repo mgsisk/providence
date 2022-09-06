@@ -4,7 +4,11 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
-No unreleased changes.
+### Added
+
+- LOGIN_SHELL environment variable
+- LOGIN_SHELL_CNF environment variable
+
 ### Changed
 
 - Key management for apt sources

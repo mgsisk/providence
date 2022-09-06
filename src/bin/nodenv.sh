@@ -19,15 +19,15 @@ if grep -qw node /tmp/prov
   make -sC src
   cd "$VUD" || exit
 
-  cat <<_ >.bash_nodenv
+  cat <<_ >.prov_nodenv
 export NODENV_ROOT=$VUD/.nodenv
 export PATH=\$NODENV_ROOT/bin:\$PATH
 eval "\$(nodenv init -)"
 _
 
-  [ -n "$NODENV_ROOT" ] || . "$VUD/.bash_nodenv"
-  grep -q '\.bash_nodenv' .bash_profile || echo '. ~/.bash_nodenv' >>.bash_profile
-  grep -q '\.bash_nodenv' /root/.bash_profile || echo ". $VUD/.bash_nodenv" >>/root/.bash_profile
+  [ -n "$NODENV_ROOT" ] || . "$VUD/.prov_nodenv"
+  grep -q '.prov_nodenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_nodenv' >>"$LOGIN_SHELL_CNF"
+  grep -q '.prov_nodenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_nodenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$NODE_VER" ] && ! nodenv global | grep -qw "$NODE_VER"
     then echo "Installing Node $NODE_VER"

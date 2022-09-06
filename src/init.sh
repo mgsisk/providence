@@ -20,12 +20,6 @@ locale-gen "$LANG" >/dev/null
 update-locale LANG="$LANG"
 [ -n "$ZONE" ] && [ -s "/usr/share/zoneinfo/$ZONE" ] && timedatectl set-timezone "$ZONE"
 
-touch .profile /root/.profile
-[ -s .bash_profile ] || echo '' >.bash_profile
-[ -s /root/.bash_profile ] || echo '' >/root/.bash_profile
-grep -q '\.profile' .bash_profile || sed -i '1 i\. ~/.profile' .bash_profile
-grep -q '\.profile' /root/.bash_profile || sed -i '1 i\. ~/.profile' /root/.bash_profile
-
 : "${BUNDLER_CNF:=/vagrant/Gemfile}"
 : "${CARGO_CNF:=/vagrant/Cargo.toml}"
 : "${COMPOSER_CNF:=/vagrant/composer.json}"
@@ -34,7 +28,8 @@ grep -q '\.profile' /root/.bash_profile || sed -i '1 i\. ~/.profile' /root/.bash
 : "${GIT_DIR:=/vagrant/.git}"
 : "${GITHUB_DIR:=/vagrant/.github}"
 : "${HG_DIR:=/vagrant/.hg}"
-: "${HOST:=@ sys.@}"
+: "${LOGIN_SHELL:=/bin/bash}"
+: "${LOGIN_SHELL_CNF:=.bash_profile}"
 : "${NODE_CNF:=/vagrant/package.json}"
 : "${PIPENV_CNF:=/vagrant/Pipfile}"
 : "${PROVIDENCE:=.}"
@@ -42,6 +37,12 @@ grep -q '\.profile' /root/.bash_profile || sed -i '1 i\. ~/.profile' /root/.bash
 : "${SHELLSPEC_CNF:=/vagrant/.shellspec}"
 : "${SVN_DIR:=/vagrant/.svn}"
 : "${TEST_DIR:=/vagrant/test}"
+
+touch .profile /root/.profile
+[ -s $LOGIN_SHELL_CNF ] || echo '' >$LOGIN_SHELL_CNF
+[ -s /root/$LOGIN_SHELL_CNF ] || echo '' >/root/$LOGIN_SHELL_CNF
+grep -q '\.profile' $LOGIN_SHELL_CNF || sed -i '1 i\. ~/.profile' $LOGIN_SHELL_CNF
+grep -q '\.profile' /root/$LOGIN_SHELL_CNF || sed -i '1 i\. ~/.profile' /root/$LOGIN_SHELL_CNF
 
 [ -z "$JEKYLL_DIR" ] && [ -s "$JEKYLL_CNF" ] && JEKYLL_DIR=$(dirname "$JEKYLL_CNF")
 [ -z "$JEKYLL_DIR" ] && grep -qs '\bjekyll' "$BUNDLER_CNF" && JEKYLL_DIR=$(dirname "$BUNDLER_CNF")
