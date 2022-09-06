@@ -4,7 +4,14 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
-No unreleased changes.
+### Changed
+
+- MARIA_VER default to 10.10
+- MONGO_VER default to 6.0
+
+### Fixed
+
+- Spelling errors
 
 ## [0.1.4][] - 2022-02-15
 
