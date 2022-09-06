@@ -5,6 +5,9 @@ Notable project changes. Versions are [semantic][].
 ## [Unreleased][]
 
 No unreleased changes.
+### Changed
+
+- Key management for apt sources
 
 ## [0.1.4][] - 2022-02-15
 
