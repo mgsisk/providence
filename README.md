@@ -42,7 +42,7 @@ Vagrant.configure('2') do |config|
   config.vm.box = 'debian/buster64'
   config.vm.hostname = 'providence.test'
   config.vm.network 'private_network', type: 'dhcp'
-  config.vm.provision 'shell', path: 'https://github.com/mgsisk/providence/releases/download/v0.1.5/provisioner.sh'
+  config.vm.provision 'shell', path: 'https://github.com/mgsisk/providence/releases/download/v0.1.6/provisioner.sh'
 end
 ```
 
