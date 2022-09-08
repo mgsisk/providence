@@ -4,6 +4,10 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
+No unreleased changes.
+
+## [0.1.6][] - 2022-09-07
+
 ### Fixed
 
 - Missing GitHub CLI apt source
@@ -97,7 +101,8 @@ Notable project changes. Versions are [semantic][].
   - xml
   - zola
 
-[unreleased]: https://github.com/mgsisk/providence/compare/v0.1.5...HEAD
+[unreleased]: https://github.com/mgsisk/providence/compare/v0.1.6...HEAD
+[0.1.6]: https://github.com/mgsisk/providence/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/mgsisk/providence/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/mgsisk/providence/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/mgsisk/providence/compare/v0.1.2...v0.1.3
