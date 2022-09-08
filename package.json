@@ -2,7 +2,7 @@
   "name": "@mgsisk/providence",
   "main": "dist/provisioner.sh",
   "type": "module",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Opinionated Vagrant shell provisioner for web development.",
   "keywords": [
     "provisioning",
