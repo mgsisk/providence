@@ -12,6 +12,7 @@ grep -qw apache /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-apach
 grep -qw couchdb /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-couchdb.asc] https://apache.jfrog.io/artifactory/couchdb-deb $LSBC main" >>prov.list
 grep -qw docker /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-docker.asc] https://download.docker.com/linux/$LSBI $LSBC stable" >>prov.list
 grep -qw git /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-git-lfs.asc] https://packagecloud.io/github/git-lfs/$LSBI $LSBC main" >>prov.list
+grep -qw github /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-github.gpg] https://cli.github.com/packages stable main" >>prov.list
 grep -qw mariadb /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-mariadb.asc] https://downloads.mariadb.com/MariaDB/mariadb-$MARIA_VER/repo/$LSBI $LSBC main" >>prov.list
 grep -qw mongodb /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-mongodb.asc] https://repo.mongodb.org/apt/$LSBI $LSBC/mongodb-org/$MONGO_VER main" >>prov.list
 grep -qw nginx /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-nginx.gpg] https://packages.sury.org/nginx $LSBC main" >>prov.list

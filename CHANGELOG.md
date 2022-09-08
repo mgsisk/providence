@@ -4,7 +4,9 @@ Notable project changes. Versions are [semantic][].
 
 ## [Unreleased][]
 
-No unreleased changes.
+### Fixed
+
+- Missing GitHub CLI apt source
 
 ## [0.1.5][] - 2022-09-06
 

@@ -5,7 +5,7 @@
   "version": "0.1.5",
   "description": "Opinionated Vagrant shell provisioner for web development.",
   "keywords": [
-    "provision",
+    "provisioning",
     "vagrant",
     "web"
   ],
