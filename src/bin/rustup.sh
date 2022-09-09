@@ -7,7 +7,7 @@
 if grep -qw rust /tmp/prov
   then echo 'Installing rustup'
   export CARGO_HOME="$VUD/.cargo" RUSTUP_HOME="$VUD/.rustup"
-  wget -nc -qO /usr/local/bin/rustup-init "https://static.rust-lang.org/rustup/dist/$(uname -m)-$(uname -i)-$(uname -s | tr '[:upper:]' '[:lower:]')-gnu/rustup-init"
+  wget -nc -qO /usr/local/bin/rustup-init "https://static.rust-lang.org/rustup/dist/$(uname -m)-$(uname -i)-$(uname -o | tr '[:upper:]' '[:lower:]' | sed 's,\([^/]*\)/\([^/]*\),\2-\1,')/rustup-init"
   chmod +x /usr/local/bin/rustup-init
   rustup-init -y >/dev/null 2>/dev/null
 
@@ -18,5 +18,7 @@ if grep -qw rust /tmp/prov
     then echo "Installing Rust $RUST_VER"
     rustup toolchain install "$RUST_VER" >/dev/null 2>/dev/null
     rustup default "$RUST_VER" >/dev/null 2>/dev/null
+
+    sed -e ''
   fi
 fi
