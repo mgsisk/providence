@@ -24,6 +24,6 @@ or delete this section.
 Provide any relevant context that might help here, including:
 
 - Code related to the feature
-- Environments that support the feature (e.g. vagrant box)
+- Environments that support the feature
 - Links to examples of the feature
 - Screenshots demonstrating the feature
