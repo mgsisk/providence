@@ -43,10 +43,10 @@ LSBC=$(lsb_release -cs | tr '[:upper:]' '[:lower:]')
 LSBI=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
 
 touch .profile /root/.profile
-[ -s $LOGIN_SHELL_CNF ] || echo '' >$LOGIN_SHELL_CNF
-[ -s /root/$LOGIN_SHELL_CNF ] || echo '' >/root/$LOGIN_SHELL_CNF
-grep -q '\.profile' $LOGIN_SHELL_CNF || sed -i '1 i\. ~/.profile' $LOGIN_SHELL_CNF
-grep -q '\.profile' /root/$LOGIN_SHELL_CNF || sed -i '1 i\. ~/.profile' /root/$LOGIN_SHELL_CNF
+[ -s "$LOGIN_SHELL_CNF" ] || echo '' >"$LOGIN_SHELL_CNF"
+[ -s "/root/$LOGIN_SHELL_CNF" ] || echo '' >"/root/$LOGIN_SHELL_CNF"
+grep -q '\.profile' "$LOGIN_SHELL_CNF" || sed -i '1 i\. ~/.profile' "$LOGIN_SHELL_CNF"
+grep -q '\.profile' "/root/$LOGIN_SHELL_CNF" || sed -i '1 i\. ~/.profile' "/root/$LOGIN_SHELL_CNF"
 
 [ -z "$JEKYLL_DIR" ] && [ -s "$JEKYLL_CNF" ] && JEKYLL_DIR=$(dirname "$JEKYLL_CNF")
 [ -z "$JEKYLL_DIR" ] && grep -qs '\bjekyll' "$BUNDLER_CNF" && JEKYLL_DIR=$(dirname "$BUNDLER_CNF")
