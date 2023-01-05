@@ -75,5 +75,5 @@ _
 
   ln -fs /etc/nginx/sites-available/sys.conf sites-enabled/sys.conf
   ln -fs /etc/nginx/sites-available/web.conf sites-enabled/web.conf
-  cd "$VUD" || exit
+  cd "$DUD" || exit
 fi

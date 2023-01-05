@@ -16,14 +16,14 @@ if grep -qw perl /tmp/prov
   tar -xkf /tmp/perl-build.tar.gz -C .plenv/plugins/perl-build --strip-components 1 2>/dev/null
 
   cat <<_ >.prov_plenv
-export PLENV_ROOT=$VUD/.plenv
+export PLENV_ROOT=$DUD/.plenv
 export PATH=\$PLENV_ROOT/bin:\$PATH
 eval "\$(plenv init -)"
 _
 
-  [ -n "$PLENV_ROOT" ] || . "$VUD/.prov_plenv"
+  [ -n "$PLENV_ROOT" ] || . "$DUD/.prov_plenv"
   grep -q '\.prov_plenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_plenv' >>"$LOGIN_SHELL_CNF"
-  grep -q '\.prov_plenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_plenv" >>"/root/$LOGIN_SHELL_CNF"
+  grep -q '\.prov_plenv' "/root/$LOGIN_SHELL_CNF" || echo ". $DUD/.prov_plenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$PERL_VER" ] && ! plenv global | grep -qw "$PERL_VER"
     then echo "Installing Perl $PERL_VER"

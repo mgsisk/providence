@@ -20,7 +20,7 @@ grep -qw node /tmp/prov && wget -nc -qO /tmp/node.v https://deb.nodesource.com/s
 grep -qw php /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-php.gpg] https://packages.sury.org/php $LSBC main" >>prov.list
 grep -qw postgres /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-postgresql.asc] https://apt.postgresql.org/pub/repos/apt $LSBC-pgdg main" >>prov.list
 grep -qw webmin /tmp/prov && echo 'deb [signed-by=/usr/share/keyrings/prov-webmin.asc] https://download.webmin.com/download/repository sarge contrib' >>prov.list
-cd "$VUD" || exit
+cd "$DUD" || exit
 
 cd /usr/share/keyrings || exit
 grep -qw apache /tmp/prov && wget -nc -qO prov-apache.gpg https://packages.sury.org/apache2/apt.gpg
@@ -36,7 +36,7 @@ grep -qw php /tmp/prov && wget -nc -qO prov-php.gpg https://packages.sury.org/ph
 grep -qw postgres /tmp/prov && wget -nc -qO prov-postgresql.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
 grep -qw webmin /tmp/prov && wget -nc -qO prov-webmin.asc http://www.webmin.com/jcameron-key.asc
 apt-get -qq update
-cd "$VUD" || exit
+cd "$DUD" || exit
 
 cat <<_ >/tmp/prov-apt
 curl

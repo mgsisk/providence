@@ -19,5 +19,5 @@ if [ -d "$PELICAN_DIR" ] && grep -qw pelican /tmp/prov
 
     dpkg --get-selections | grep -q '^nginx.*\si' && echo "error_page 404 ${PELICAN_SRV#/srv/web}/404.html;" >/etc/nginx/conf.d/web/pelican.conf
   fi
-  cd "$VUD" || exit
+  cd "$DUD" || exit
 fi

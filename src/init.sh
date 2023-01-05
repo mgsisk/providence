@@ -10,7 +10,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo 'Provisioning with Providence v0.1.6'
 
-VUD=$(getent passwd vagrant | cut -d: -f6) && cd "$VUD" || exit
 LSBC=$(lsb_release -cs | tr '[:upper:]' '[:lower:]')
 LSBI=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
 
@@ -37,6 +36,10 @@ update-locale LANG="$LANG"
 : "${SHELLSPEC_CNF:=/vagrant/.shellspec}"
 : "${SVN_DIR:=/vagrant/.svn}"
 : "${TEST_DIR:=/vagrant/test}"
+: "${USR:=vagrant}"
+
+DUD=$(getent passwd "$USR" | cut -d: -f6) && cd "$DUD" || exit
+GRP=$(id -gn "$USR")
 
 touch .profile /root/.profile
 [ -s $LOGIN_SHELL_CNF ] || echo '' >$LOGIN_SHELL_CNF

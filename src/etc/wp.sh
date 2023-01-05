@@ -43,5 +43,5 @@ theme enable:
   network: true
 _
 
-  ln -fs "$VUD/.wp-cli/config.yml" /root/.wp-cli/config.yml
+  ln -fs "$DUD/.wp-cli/config.yml" /root/.wp-cli/config.yml
 fi

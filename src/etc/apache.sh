@@ -85,5 +85,5 @@ _
   ln -fs /etc/apache2/conf-available/sys/server-info.conf conf-enabled/sys/server-info.conf
   ln -fs /etc/apache2/sites-available/sys.conf sites-enabled/sys.conf
   ln -fs /etc/apache2/sites-available/web.conf sites-enabled/web.conf
-  cd "$VUD" || exit
+  cd "$DUD" || exit
 fi

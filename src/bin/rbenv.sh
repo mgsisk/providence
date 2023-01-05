@@ -20,14 +20,14 @@ if grep -qw ruby /tmp/prov
   cd "$VUD" || exit
 
   cat <<_ >.prov_rbenv
-export RBENV_ROOT=$VUD/.rbenv
+export RBENV_ROOT=$DUD/.rbenv
 export PATH=\$RBENV_ROOT/bin:\$PATH
 eval "\$(rbenv init -)"
 _
 
-  [ -n "$RBENV_ROOT" ] || . "$VUD/.prov_rbenv"
+  [ -n "$RBENV_ROOT" ] || . "$DUD/.prov_rbenv"
   grep -q '\.prov_rbenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_rbenv' >>"$LOGIN_SHELL_CNF"
-  grep -q '\.prov_rbenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_rbenv" >>"/root/$LOGIN_SHELL_CNF"
+  grep -q '\.prov_rbenv' "/root/$LOGIN_SHELL_CNF" || echo ". $DUD/.prov_rbenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$RUBY_VER" ] && ! rbenv global | grep -qw "$RUBY_VER"
     then echo "Installing Ruby $RUBY_VER"
@@ -43,6 +43,6 @@ _
     cd "$(dirname "$BUNDLER_CNF")" || exit
     rbenv exec bundle config --global silence_root_warning 1
     rbenv exec bundle install --quiet
-    cd "$VUD" || exit
+    cd "$DUD" || exit
   fi
 fi

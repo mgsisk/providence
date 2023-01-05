@@ -17,17 +17,17 @@ if grep -qw node /tmp/prov
   cd .nodenv || exit
   src/configure
   make -sC src
-  cd "$VUD" || exit
+  cd "$DUD" || exit
 
   cat <<_ >.prov_nodenv
-export NODENV_ROOT=$VUD/.nodenv
+export NODENV_ROOT=$DUD/.nodenv
 export PATH=\$NODENV_ROOT/bin:\$PATH
 eval "\$(nodenv init -)"
 _
 
-  [ -n "$NODENV_ROOT" ] || . "$VUD/.prov_nodenv"
+  [ -n "$NODENV_ROOT" ] || . "$DUD/.prov_nodenv"
   grep -q '.prov_nodenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_nodenv' >>"$LOGIN_SHELL_CNF"
-  grep -q '.prov_nodenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_nodenv" >>"/root/$LOGIN_SHELL_CNF"
+  grep -q '.prov_nodenv' "/root/$LOGIN_SHELL_CNF" || echo ". $DUD/.prov_nodenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$NODE_VER" ] && ! nodenv global | grep -qw "$NODE_VER"
     then echo "Installing Node $NODE_VER"
@@ -42,7 +42,7 @@ _
 
     cd "$(dirname "$NODE_CNF")" || exit
     nodenv exec npm -s install 2>/dev/null
-    cd "$VUD" || exit
+    cd "$DUD" || exit
 
     nodenv exec npm set progress true 2>/dev/null
     nodenv exec npm set loglevel notice 2>/dev/null

@@ -11,17 +11,17 @@ if grep -qw go /tmp/prov
   tar -xkf /tmp/goenv.tar.gz -C .goenv --strip-components 1 2>/dev/null
 
   cat <<_ >.prov_goenv
-export GOPATH=$VUD/.go
+export GOPATH=$DUD/.go
 export GOENV_GOPATH_PREFIX=\$GOPATH
-export GOENV_ROOT=$VUD/.goenv
+export GOENV_ROOT=$DUD/.goenv
 export PATH=\$GOENV_ROOT/bin:\$PATH
 eval "\$(goenv init -)"
 export PATH=\$GOROOT/bin:\$PATH:\$GOPATH/bin
 _
 
-  [ -n "$GOENV_ROOT" ] || . "$VUD/.prov_goenv"
+  [ -n "$GOENV_ROOT" ] || . "$DUD/.prov_goenv"
   grep -q '\.prov_goenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_goenv' >>"$LOGIN_SHELL_CNF"
-  grep -q '\.prov_goenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_goenv" >>"/root/$LOGIN_SHELL_CNF"
+  grep -q '\.prov_goenv' "/root/$LOGIN_SHELL_CNF" || echo ". $DUD/.prov_goenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$GO_VER" ] && ! goenv global | grep -qw "$GO_VER"
     then echo "Installing Go $GO_VER"

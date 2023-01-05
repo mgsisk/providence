@@ -12,5 +12,5 @@ if dpkg --get-selections | grep -q '^couchdb.*\si'
   sed -i 's/^;bind_address = .*/bind_address = 0.0.0.0/' etc/local.ini
   sed -i 's/^;WWW-Authenticate =/WWW-Authenticate =/' etc/local.ini
   service couchdb restart
-  cd "$VUD" || exit
+  cd "$DUD" || exit
 fi

@@ -6,12 +6,12 @@
 
 if grep -qw rust /tmp/prov
   then echo 'Installing rustup'
-  export CARGO_HOME="$VUD/.cargo" RUSTUP_HOME="$VUD/.rustup"
+  export CARGO_HOME="$DUD/.cargo" RUSTUP_HOME="$DUD/.rustup"
   wget -nc -qO /usr/local/bin/rustup-init "https://static.rust-lang.org/rustup/dist/$(uname -m)-$(uname -i)-$(uname -o | tr '[:upper:]' '[:lower:]' | sed 's,\([^/]*\)/\([^/]*\),\2-\1,')/rustup-init"
   chmod +x /usr/local/bin/rustup-init
   rustup-init -y >/dev/null 2>/dev/null
 
-  echo "$PATH" | grep -q '/\.cargo/' || . "$VUD/.cargo/env"
+  echo "$PATH" | grep -q '/\.cargo/' || . "$DUD/.cargo/env"
   grep -q '\.cargo' "$LOGIN_SHELL_CNF" || echo '. ~/.cargo/env' >>"$LOGIN_SHELL_CNF"
 
   if [ -n "$RUST_VER" ] && ! rustup default | cut -d- -f1 | grep -qw "$RUST_VER"

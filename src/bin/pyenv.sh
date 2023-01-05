@@ -12,14 +12,14 @@ if grep -qw python /tmp/prov
 
   cat <<_ >.prov_pyenv
 export PIPENV_VENV_IN_PROJECT=:
-export PYENV_ROOT=$VUD/.pyenv
-export PATH=\$PYENV_ROOT/bin:$VUD/.local/bin:\$PATH
+export PYENV_ROOT=$DUD/.pyenv
+export PATH=\$PYENV_ROOT/bin:$DUD/.local/bin:\$PATH
 eval "\$(pyenv init -)"
 _
 
-  [ -n "$PYENV_ROOT" ] || . "$VUD/.prov_pyenv"
+  [ -n "$PYENV_ROOT" ] || . "$DUD/.prov_pyenv"
   grep -q '\.prov_pyenv' "$LOGIN_SHELL_CNF" || echo '. ~/.prov_pyenv' >>"$LOGIN_SHELL_CNF"
-  grep -q '\.prov_pyenv' "/root/$LOGIN_SHELL_CNF" || echo ". $VUD/.prov_pyenv" >>"/root/$LOGIN_SHELL_CNF"
+  grep -q '\.prov_pyenv' "/root/$LOGIN_SHELL_CNF" || echo ". $DUD/.prov_pyenv" >>"/root/$LOGIN_SHELL_CNF"
 
   if [ -n "$PYTHON_VER" ] && ! pyenv global | grep -qw "$PYTHON_VER"
     then echo "Installing Python $PYTHON_VER"
@@ -34,6 +34,6 @@ _
     then echo 'Installing pipenv packages'
     cd "$(dirname "$PIPENV_CNF")" || exit
     pyenv exec pipenv --bare install --dev >/dev/null 2>/dev/null
-    cd "$VUD" || exit
+    cd "$DUD" || exit
   fi
 fi

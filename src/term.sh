@@ -86,14 +86,14 @@ $(sed 's/<title>/<title>sys./' </tmp/prov-web)
 $(find /srv/sys -maxdepth 2 -mindepth 2 -name 'index*' | sort | sed 's|/srv/sys/||' | sed 's|\(.*\)/index.*|\1:\1|' | sed 's|^|<a href="|' | sed 's|:|">|' | sed 's|$|</a>|')
 _
 
-chown -R vagrant:vagrant "$VUD"
+chown -R "$USR:$GRP" "$DUD"
 chown -R www-data:www-data /srv
 
 service --status-all | grep -q '+.*apache2' && service apache2 restart
 service --status-all | grep -q '+.*nginx' && service nginx restart
 
 chsh -s "$LOGIN_SHELL"
-chsh -s "$LOGIN_SHELL" vagrant
+chsh -s "$LOGIN_SHELL" "$USR"
 
 term=$(date +%s)
 mins=$(((term - init) / 60))

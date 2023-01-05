@@ -16,5 +16,5 @@ if [ -d "$HUGO_DIR" ] && grep -qw hugo /tmp/prov
   fi
 
   dpkg --get-selections | grep -q '^nginx.*\si' && echo "error_page 404 ${HUGO_SRV#/srv/web}/404.html;" >/etc/nginx/conf.d/web/hugo.conf
-  cd "$VUD" || exit
+  cd "$DUD" || exit
 fi

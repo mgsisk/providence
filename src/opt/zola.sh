@@ -17,5 +17,5 @@ if [ -d "$ZOLA_DIR" ] && grep -qw zola /tmp/prov
   fi
 
   dpkg --get-selections | grep -q '^nginx.*\si' && echo "error_page 404 ${ZOLA_SRV#/srv/web}/404.html;" >/etc/nginx/conf.d/web/zola.conf
-  cd "$VUD" || exit
+  cd "$DUD" || exit
 fi

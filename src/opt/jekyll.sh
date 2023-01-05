@@ -19,5 +19,5 @@ if [ -d "$JEKYLL_DIR" ] && grep -qw jekyll /tmp/prov
 
     dpkg --get-selections | grep -q '^nginx.*\si' && echo "error_page 404 ${JEKYLL_SRV#/srv/web}/404.html;" >/etc/nginx/conf.d/web/jekyll.conf
   fi
-  cd "$VUD" || exit
+  cd "$DUD" || exit
 fi
