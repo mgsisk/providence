@@ -23,11 +23,9 @@
   },
   "repository": "github:mgsisk/providence",
   "scripts": {
-    "fix.md": "remark . .github/ --ignore-pattern 'LICENSE*' -o",
-    "fix.sh": "shellcheck *.sh -f diff | git apply",
     "lint.json": "YAMLLINT_SCHEMA=JSON_SCHEMA yamllint '**/*.json' '**/.*.json'",
-    "lint.md": "remark . .github/ --ignore-pattern 'LICENSE*' --ignore-pattern 'test/**'",
-    "lint.sh": "shellcheck src/**/*.sh",
+    "lint.md": "remark . .github/ --ignore-pattern 'LICENSE*' -o",
+    "lint.sh": "shellcheck src/**/*.sh -f diff | git apply",
     "lint.yml": "yamllint '**/*.yml' '**/.*.yml'",
     "premake.docs": "vagrant status --no-tty | grep -qw running || vagrant up",
     "make.docs": "vagrant ssh -c 'sudo jekyll build -d /srv/web/providence -s /vagrant/docs -w --force_polling'",
