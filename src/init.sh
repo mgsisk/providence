@@ -10,8 +10,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo 'Provisioning with Providence v0.1.6'
 
-LSBC=$(lsb_release -cs | tr '[:upper:]' '[:lower:]')
-LSBI=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
+apt-get -qq update && apt-get -qq install --no-install-recommends apt-transport-https lsb-release lsof wget >/dev/null
 
 grep -qw "$LANG" /etc/locale.gen || LANG=en_US.UTF-8
 sed -i "s/# *$LANG/$LANG/" /etc/locale.gen
@@ -40,6 +39,8 @@ update-locale LANG="$LANG"
 
 DUD=$(getent passwd "$USR" | cut -d: -f6) && cd "$DUD" || exit
 GRP=$(id -gn "$USR")
+LSBC=$(lsb_release -cs | tr '[:upper:]' '[:lower:]')
+LSBI=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
 
 touch .profile /root/.profile
 [ -s $LOGIN_SHELL_CNF ] || echo '' >$LOGIN_SHELL_CNF

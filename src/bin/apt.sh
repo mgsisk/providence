@@ -4,8 +4,6 @@
 # Install system packages.
 # ------------------------------------------------------------------------------
 
-[ ! -s /usr/lib/apt/methods/https ] && apt-get -qq update && apt-get -qq install --no-install-recommends apt-transport-https >/dev/null
-
 cd /etc/apt/sources.list.d || exit
 : >prov.list
 grep -qw apache /tmp/prov && echo "deb [signed-by=/usr/share/keyrings/prov-apache.gpg] https://packages.sury.org/apache2 $LSBC main" >>prov.list
