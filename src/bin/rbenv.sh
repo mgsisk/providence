@@ -14,10 +14,6 @@ if grep -qw ruby /tmp/prov
   echo 'Installing rbenv'
   wget -nc -qO /tmp/rbenv.tar.gz https://api.github.com/repos/rbenv/rbenv/tarball
   tar -xkf /tmp/rbenv.tar.gz -C .rbenv --strip-components 1 2>/dev/null
-  cd .rbenv || exit
-  src/configure
-  make -sC src
-  cd "$VUD" || exit
 
   cat <<_ >.prov_rbenv
 export RBENV_ROOT=$DUD/.rbenv
