@@ -30,7 +30,7 @@
     "premake.docs": "vagrant status --no-tty | grep -qw running || vagrant up",
     "make.docs": "vagrant ssh -c 'sudo jekyll build -d /srv/web/providence -s /vagrant/docs -w --force_polling'",
     "make.sh": "src/make.sh",
-    "test": "npm run lint.sh",
+    "test": "shellcheck src/**/*.sh",
     "preversion": "npm test",
     "version": "git add --all",
     "postversion": "git push --follow-tags",
