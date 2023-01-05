@@ -89,8 +89,8 @@ _
 chown -R "$USR:$GRP" "$DUD"
 chown -R www-data:www-data /srv
 
-service --status-all | grep -q '+.*apache2' && service apache2 restart
-service --status-all | grep -q '+.*nginx' && service nginx restart
+service --status-all 2>&1 | grep -q '+.*apache2' && service apache2 restart
+service --status-all 2>&1 | grep -q '+.*nginx' && service nginx restart
 
 chsh -s "$LOGIN_SHELL"
 chsh -s "$LOGIN_SHELL" "$USR"

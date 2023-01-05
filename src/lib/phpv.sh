@@ -107,8 +107,8 @@ dpkg --get-selections | grep -q '^apache.*\si' && ln -fs "/etc/apache2/conf-avai
 dpkg --get-selections | grep -q '^nginx.*\si' && echo "include snippets/fastcgi-php.conf; fastcgi_pass unix:/run/php/php\$p-fpm.sock;" >/etc/nginx/php-fpm
 dpkg --get-selections | grep -q '^webmin.*\si' && printf 'php_ini=%s=Configuration for php-cli\t%s=Configuration for php-fpm' "/etc/php/\$p/cli/php.ini" "/etc/php/\$p/fpm/php.ini" >/etc/webmin/phpini/config && service webmin restart
 
-service --status-all | grep -q '+.*apache2' && service apache2 restart
-service --status-all | grep -q '+.*nginx' && service nginx restart
+service --status-all 2>&1 | grep -q '+.*apache2' && service apache2 restart
+service --status-all 2>&1 | grep -q '+.*nginx' && service nginx restart
 service "php\$p-fpm" restart
 _
 chmod +x /usr/local/bin/phpv
