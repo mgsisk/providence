@@ -22,7 +22,7 @@ for specific variables is available below.
 | HG_DIR              | /vagrant/.hg                                   | hg                                       |
 | HUGO_DIR            |                                                | hugo nginx                               |
 | HUGO_SRV            | /srv/web                                       |                                          |
-| JEKYLL_CNF          | First _config TOML or YAML file in JEKYLL_DIR  |                                          |
+| JEKYLL_CNF          | First \_config TOML or YAML file in JEKYLL_DIR |                                          |
 | JEKYLL_DIR          | Directory containing JEKLL_CNF or BUNDLER_CNF  | jekyll nginx ruby                        |
 | JEKYLL_SRV          | /srv/web                                       |                                          |
 | [LANG][]            | en_US.UTF-8                                    |                                          |
@@ -32,7 +32,7 @@ for specific variables is available below.
 | MONGO_VER           | 5.0                                            | mongodb                                  |
 | NODE_CNF            | /vagrant/package.json                          | node                                     |
 | [NODE_VER][]        | Derived from NODE_CNF                          | node                                     |
-| PELICAN_CNF         | First *conf.py file in PELICAN_DIR             |                                          |
+| PELICAN_CNF         | First \*conf.py file in PELICAN_DIR            |                                          |
 | PELICAN_DIR         | Directory containing PELICAN_CNF or PIPENV_CNF | nginx pelican python                     |
 | PELICAN_SRV         | /srv/web                                       |                                          |
 | PERL_VER            |                                                | perl                                     |
@@ -46,6 +46,7 @@ for specific variables is available below.
 | SHELLSPEC_CNF       | /vagrant/.shellspec                            | shell                                    |
 | SVN_DIR             | /vagrant/.svn                                  | svn                                      |
 | TEST_DIR            | /vagrant/test                                  |                                          |
+| [USR][]             | vagrant                                        |                                          |
 | WEB_DIR             |                                                | nginx                                    |
 | WEB_SRV             | /srv/web                                       |                                          |
 | WP_CNF              | WP_DIR/readme.txt                              |                                          |
@@ -88,7 +89,7 @@ constraints and may attempt to install an incorrect version.
 
 Version of [PHP][] to install with [phpv][]. No default, but Providence will use
 the version specified in WP_CNF (e.g. `Requires PHP: 7.4`) or COMPOSER_CNF (e.g.
-`"php": ">=7.4"`) if found  (`WP_CNF` takes priority). Note that Providence does
+`"php": ">=7.4"`) if found (`WP_CNF` takes priority). Note that Providence does
 not understand Composer version constraints and may attempt to install an
 incorrect version.
 
@@ -98,7 +99,7 @@ Space-separated list of keywords used to provision the guest.
 
 | Keyword   | Provisions                                         |
 | --------- | -------------------------------------------------- |
-| *         | Everything                                         |
+| \*        | Everything                                         |
 | .         | Based on project structure and configuration files |
 | apache    | [Apache][]                                         |
 | couchdb   | [CouchDB][]                                        |
@@ -171,6 +172,12 @@ Version of [Ruby][] to install with [rbenv][]. No default, but Providence will
 use the version specified in BUNDLER_CNF if found (e.g. `ruby '~> 2.3.0'`). Note
 that Providence does not understand Bundler version constraints and may attempt
 to install an incorrect version.
+
+## USR
+
+User name for the default login user. Useful for provisioning non-Vagrant
+systems or non-standard Vagrant systems that don't use `vagrant` as the default
+login user with `vagrant ssh`.
 
 ## WP_DATA
 
@@ -350,6 +357,7 @@ Guest time zone. Must be a valid tz database value (e.g. `America/Detroit`).
 [twentytwentyone]: https://wordpress.org/themes/twentytwentyone
 [twentytwentytwo]: https://wordpress.org/themes/twentytwentytwo
 [user-switching]: https://wordpress.org/plugins/user-switching
+[usr]: #usr
 [webgrind]: https://github.com/jokkedk/webgrind
 [webmin]: https://www.webmin.com
 [wordpress-beta-tester]: https://wordpress.org/plugins/wordpress-beta-tester
