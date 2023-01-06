@@ -128,9 +128,9 @@ your system's hosts file for the hostname to work in a web browser:
 192.168.84.42    providence.test    sys.providence.test
 ```
 
-[Vagrant plugins][] like [vagrant-hostsupdater][] can help you automate this, or
-you can use [Vagrant triggers][] to automate the process yourself. See
-[this gist][] for an exmaple of how to do this with triggers.
+[Vagrant plugins][] can help you automate this, or you can use
+[Vagrant triggers][] to automate the process yourself. See [this gist][] for an
+exmaple of how to do this with triggers.
 
 ## Customization
 
@@ -150,5 +150,4 @@ process.
 [vagrant plugins]: https://www.vagrantup.com/docs/plugins
 [vagrant shell provisioner]: https://www.vagrantup.com/docs/provisioning/shell
 [vagrant triggers]: https://www.vagrantup.com/docs/triggers
-[vagrant-hostsupdater]: https://github.com/agiledivider/vagrant-hostsupdater
 [vagrant]: https://vagrantup.com
