@@ -251,6 +251,7 @@ value, `.`, is a placeholder for the following themes:
 - [twentytwenty][]
 - [twentytwentyone][]
 - [twentytwentytwo][]
+- [twentytwentythree][]
 
 Providence always installs WP_THEME if specified, regardless of the value of
 WP_THEMES.
@@ -356,6 +357,7 @@ Guest time zone. Must be a valid tz database value (e.g. `America/Detroit`).
 [twentytwenty]: https://wordpress.org/themes/twentytwenty
 [twentytwentyone]: https://wordpress.org/themes/twentytwentyone
 [twentytwentytwo]: https://wordpress.org/themes/twentytwentytwo
+[twentytwentytwo]: https://wordpress.org/themes/twentytwentythree
 [user-switching]: https://wordpress.org/plugins/user-switching
 [usr]: #usr
 [webgrind]: https://github.com/jokkedk/webgrind
