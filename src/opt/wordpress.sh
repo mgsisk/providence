@@ -19,7 +19,7 @@ if grep -qw wordpress /tmp/prov
   sort -uo /tmp/wp-plugins /tmp/wp-plugins
 
   echo " $WP_THEMES $WP_THEME " >/tmp/wp-themes
-  sed -i 's/ \. / classic default twentyten twentyeleven twentytwelve twentythirteen twentyfourteen twentyfifteen twentysixteen twentyseventeen twentynineteen twentytwenty twentytwentyone /' /tmp/wp-themes
+  sed -i 's/ \. / classic default twentyten twentyeleven twentytwelve twentythirteen twentyfourteen twentyfifteen twentysixteen twentyseventeen twentynineteen twentytwenty twentytwentyone twentytwentytwo twentytwentythree /' /tmp/wp-themes
   sed -i 's/ /\n/g' /tmp/wp-themes
   sed -i '/^$/d' /tmp/wp-themes
   sort -uo /tmp/wp-themes /tmp/wp-themes
