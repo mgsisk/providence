@@ -28,7 +28,9 @@ Vagrant.configure('2') do |conf|
   conf.trigger.before :destroy, :halt, :reload, :suspend do |t|
     t.info = 'Updating system hosts...'
     t.ruby do |env, vm|
-      system("sudo sed -i '' '/ # vagrant-#{vm.id}$/d' /etc/hosts")
+      command = "sudo sed -i '' '/ # vagrant-#{vm.id}$/d' /etc/hosts"
+      command = "type %WINDIR%\\system32\\drivers\\etc\\hosts | findstr /e /v /c:vagrant-#{vm.id}>prov-hosts && move /Y prov-hosts %WINDIR%\\system32\\drivers\\etc\\hosts" if Vagrant::Util::Platform.windows?
+      system(command)
     end
   end
 
@@ -37,7 +39,9 @@ Vagrant.configure('2') do |conf|
     t.ruby do |env, vm|
       hostname = `vagrant ssh #{vm.name} -c 'hostname -f' -- -q`.chomp
       ip_address = `vagrant ssh #{vm.name} -c 'hostname -I | cut -d" " -f2' -- -q`.chomp
-      system("echo '#{ip_address} #{hostname} sys.#{hostname} # vagrant-#{vm.id}' | sudo tee -a /etc/hosts >/dev/null")
+      command = "echo '#{ip_address} #{hostname} sys.#{hostname} # vagrant-#{vm.id}' | sudo tee -a /etc/hosts >/dev/null"
+      command = "echo #{ip_address} #{hostname} sys.#{hostname} # vagrant-#{vm.id}>> %WINDIR%\\system32\\drivers\\etc\\hosts" if Vagrant::Util::Platform.windows?
+      system(command)
     end
   end
 end
