@@ -11,7 +11,7 @@ export DEBIAN_FRONTEND=noninteractive
 echo 'Provisioning with Providence v0.1.6'
 
 apt-get -qq update
-apt-get -qq install --no-install-recommends apt-transport-https lsb-release lsof tar wget >/dev/null
+apt-get -qq install --no-install-recommends apt-transport-https locales lsb-release lsof tar wget >/dev/null
 
 grep -qw "$LANG" /etc/locale.gen || LANG=en_US.UTF-8
 sed -i "s/# *$LANG/$LANG/" /etc/locale.gen
