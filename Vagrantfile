@@ -38,7 +38,7 @@ Vagrant.configure('2') do |conf|
     t.info = 'Updating sytstem hosts...'
     t.ruby do |env, vm|
       hostname = `vagrant ssh #{vm.name} -c 'hostname -f' -- -q`.chomp
-      ip_address = `vagrant ssh #{vm.name} -c 'hostname -I | cut -d" " -f2' -- -q`.chomp
+      ip_address = `vagrant ssh #{vm.name} -c 'hostname -I | cut -f2 -d\\ ' -- -q`.chomp
       command = "echo '#{ip_address} #{hostname} sys.#{hostname} # vagrant-#{vm.id}' | sudo tee -a /etc/hosts >/dev/null"
       command = "echo #{ip_address} #{hostname} sys.#{hostname} # vagrant-#{vm.id}>> %WINDIR%\\system32\\drivers\\etc\\hosts" if Vagrant::Util::Platform.windows?
       system(command)
